@@ -2,6 +2,7 @@ import java.util.*;
 
 public class Member{
 	double memberPrice;
+	int age;
 
 	public Member(int age){
 		if(age < 18){
