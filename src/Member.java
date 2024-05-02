@@ -3,6 +3,9 @@ import java.util.*;
 public class Member{
 	double memberPrice;
 	int age;
+	int phoneNumber;
+	String name;
+
 
 	public Member(int age){
 		if(age < 18){
