@@ -1,5 +1,4 @@
 import java.util.*;
-
 public class Member{
 	double memberPrice;
 	int age;
