@@ -39,6 +39,10 @@ public class Member{ // default motionist
 		return memberPrice;
 	}
 
+	public void setMemberPrice(double memberPrice){
+		this.memberPrice = memberPrice;
+	}
+
 	public int getMemberId(){
 		return memberId;
 	}
@@ -51,32 +55,64 @@ public class Member{ // default motionist
 		return name;
 	}
 
+	public void setName(String name){
+		this.name = name;
+	}
+
 	public int getAge(){
 		return age;
+	}
+
+	public void setAge(int age){
+		this.age = age;
 	}
 
 	public int getGender(){
 		return gender;
 	}
 
+	public void setGender(int gender){
+		this.gender = gender;
+	}
+
 	public int getPhoneNr(){
 		return phoneNr;
+	}
+
+	public void setPhoneNr(int phoneNr){
+		this.phoneNr = phoneNr;
 	}
 
 	public String getAddress(){
 		return address;
 	}
 
+	public void setAddress(String address){
+		this.address = address;
+	}
+
 	public boolean getIsActive(){
 		return isActive;
+	}
+
+	public void setIsActive(boolean isActive){
+		this.isActive = isActive;
 	}
 
 	public boolean getIsPaid(){
 		return isPaid;
 	}
 
+	public void setIsPaid(boolean isPaid){
+		this.isPaid = isPaid;
+	}
+
 	public boolean getIsBlocked(){
 		return isBlocked;
+	}
+
+	public void setIsBlocked(boolean isBlocked){
+		this.isBlocked = isBlocked;
 	}
 
 	public void printMemberInfo(){
@@ -95,4 +131,7 @@ public class Member{ // default motionist
 		System.out.println("Adresse: " + address);
 	}
 
+	public boolean isCompetitive(){
+		return false;
+	}
 }

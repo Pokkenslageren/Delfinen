@@ -4,9 +4,11 @@ public class CompetitiveSwimmer extends Member{
 	ArrayList<Results> compResults;
 	ArrayList<Results> trainingResults;
 
-	private boolean isFreestyle;
-	private boolean isBreaststroke;
-	private boolean isButterfly;
+	private boolean isFreestyle = true;
+	private boolean isBreaststroke = true;
+	private boolean isButterfly = true;
+
+	Random rdm = new Random();
 
 	CompetitiveSwimmer(String name, int age, int gender, int phoneNr, String address, int flag1, int flag2, int flag3){
 		super(name, age, gender, phoneNr, address);
@@ -30,6 +32,8 @@ public class CompetitiveSwimmer extends Member{
 		else {
 			isButterfly = false;
 		}
+
+		int memberId = rdm.nextInt(100,10000); // Tjek om memberId er unikt.
 	}
 
 	public ArrayList<Results> getCompResults(){
@@ -40,12 +44,36 @@ public class CompetitiveSwimmer extends Member{
 		return trainingResults;
 	}
 
+	public boolean getIsFreestyle(){
+		return isFreestyle;
+	}
+
+	public void setIsFreestyle(boolean isFreestyle){
+		this.isFreestyle = isFreestyle;
+	}
+
+	public boolean getIsBreaststroke(){
+		return isBreaststroke;
+	}
+
+	public void setIsBreaststroke(boolean isBreaststroke){
+		this.isBreaststroke = isBreaststroke;
+	}
+
+	public boolean getIsButterfly(){
+		return isButterfly;
+	}
+
+	public void setIsButterfly(boolean isButterfly){
+		this.isButterfly = isButterfly;
+	}
+
 	public void printDisciplines(){
 		if (isFreestyle){
 			System.out.println("Freestyle.");
 		}
 		if (isBreaststroke){
-			System.out.println("Breaststroke.");
+			System.out.println("Brystsvømning.");
 		}
 		if (isButterfly){
 			System.out.println("Butterfly.");
@@ -60,7 +88,7 @@ public class CompetitiveSwimmer extends Member{
 		}
 
 		if (isBreaststroke) {
-			System.out.println("Breaststroke.");
+			System.out.println("Brystsvømning.");
 		}
 
 		if (isButterfly) {
@@ -68,4 +96,7 @@ public class CompetitiveSwimmer extends Member{
 		}
 	}
 
+	public boolean isCompetitive(){
+		return true;
+	}
 }
