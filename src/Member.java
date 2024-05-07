@@ -82,7 +82,15 @@ public class Member{ // default motionist
 	public void printMemberInfo(){
 		System.out.println("Navn: " + name);
 		System.out.println("Alder: " + age);
-		System.out.println("Køn: " + gender);
+		if (gender == 1){
+			System.out.println("Køn: mand");
+		}
+		else if (gender == 2){
+			System.out.println("Køn: kvinde");
+		}
+		else {
+			System.out.println("Køn: andet");
+		}
 		System.out.println("Telefonnummer: " + phoneNr);
 		System.out.println("Adresse: " + address);
 	}
