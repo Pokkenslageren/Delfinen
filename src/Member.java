@@ -1,9 +1,17 @@
 import java.util.*;
+
 public class Member{
 	double memberPrice;
-	int age;
-	int phoneNumber;
+	int memberId;
+	double dateCreated;
 	String name;
+	int age;
+	String gender;
+	String address;
+	int phoneNr;
+	boolean isActive;
+	boolean isPaid;
+	boolean blocked;
 
 
 	public Member(int age){
