@@ -88,6 +88,7 @@ public class Chairman{
         public void editMember(int memberId){
             for (int i = 0; i <= members.size()-1; i++){
                 if (memberId == members.get(i).getMemberId()){
+                    System.out.println("ID fundet.");
                     if (members.get(i).isCompetitive()){
                         int sentinel = 1;
                         while (sentinel == 1){
@@ -206,16 +207,34 @@ public class Chairman{
                                     break;
 
                                 case 6:
-                                    System.out.println("Nuværende freestyle aktivitet: " + members.get(i).getIsFreestyle());
-                                    System.out.println("Indtast det nye valg: ");
-                                    int freestyle = scanner.nextInt();
-                                    members.get(i).setIsFreestyle(freestyle);
-                                    System.out.println("Ændring gemt: " + members.get(i).getIsFreestyle());
+                                    if(members.get(i) instanceof CompetitiveSwimmer) {
+                                        System.out.println("Nuværende freestyle aktivitet: " + (((CompetitiveSwimmer) members.get(i)).getIsFreestyle()));
+                                        System.out.println("Indtast det nye valg: ");
+                                        boolean freestyle = scanner.nextBoolean(); // OBS DATATYPE
+                                        ((CompetitiveSwimmer) members.get(i)).setIsFreestyle(freestyle);
+                                        System.out.println("Ændring gemt: " + ((CompetitiveSwimmer) members.get(i)).getIsFreestyle());
+                                    }
                                     break;
 
                                 case 7:
+                                    if(members.get(i) instanceof CompetitiveSwimmer) {
+                                        System.out.println("Nuværende brystsvømning aktivitet: " + (((CompetitiveSwimmer) members.get(i)).getIsBreaststroke()));
+                                        System.out.println("Indtast det nye valg: ");
+                                        boolean breaststroke = scanner.nextBoolean(); // OBS DATATYPE
+                                        ((CompetitiveSwimmer) members.get(i)).setIsBreaststroke(breaststroke);
+                                        System.out.println("Ændring gemt: " + ((CompetitiveSwimmer) members.get(i)).getIsBreaststroke());
+                                    }
+                                    break;
 
                                 case 8:
+                                    if(members.get(i) instanceof CompetitiveSwimmer) {
+                                        System.out.println("Nuværende butterfly aktivitet: " + (((CompetitiveSwimmer) members.get(i)).getIsButterfly()));
+                                        System.out.println("Indtast det nye valg: ");
+                                        boolean butterfly = scanner.nextBoolean(); // OBS DATATYPE
+                                        ((CompetitiveSwimmer) members.get(i)).setIsButterfly(butterfly);
+                                        System.out.println("Ændring gemt: " + ((CompetitiveSwimmer) members.get(i)).getIsButterfly());
+                                    }
+                                    break;
 
                                 default:
                                     sentinel = 0;
@@ -223,6 +242,9 @@ public class Chairman{
                             }
                         }
                     }
+                }
+                else {
+                    System.out.println("ID ikke fundet.");
                 }
             }
         }

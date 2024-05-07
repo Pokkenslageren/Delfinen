@@ -48,7 +48,7 @@ public class CompetitiveSwimmer extends Member{
 		return isFreestyle;
 	}
 
-	public void setIsFreestyle(boolean isFreestyle){
+	public void setIsFreestyle(boolean isFreestyle){ // OBS DATATYPE
 		this.isFreestyle = isFreestyle;
 	}
 
