@@ -89,7 +89,7 @@ public class Chairman{
             for (int i = 0; i <= members.size()-1; i++){
                 if (memberId == members.get(i).getMemberId()){
                     System.out.println("ID fundet.");
-                    if (members.get(i).isCompetitive()){
+                    if (members.get(i).isCompetitive() == false){
                         int sentinel = 1;
                         while (sentinel == 1){
                             members.get(i).printMemberInfo();

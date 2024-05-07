@@ -8,6 +8,7 @@ public class CompetitiveSwimmer extends Member{
 	private boolean isBreaststroke = true;
 	private boolean isButterfly = true;
 
+
 	Random rdm = new Random();
 
 	CompetitiveSwimmer(String name, int age, int gender, int phoneNr, String address, int flag1, int flag2, int flag3){
@@ -33,7 +34,7 @@ public class CompetitiveSwimmer extends Member{
 			isButterfly = false;
 		}
 
-		int memberId = rdm.nextInt(100,10000); // Tjek om memberId er unikt.
+		super.memberId =  27;//rdm.nextInt(100,10000); // Tjek om memberId er unikt.
 	}
 
 	public ArrayList<Results> getCompResults(){

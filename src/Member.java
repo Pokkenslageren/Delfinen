@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Member{ // default motionist
 	private double memberPrice;
-	private int memberId;
+	protected int memberId;
 	private double dateCreated;
 	private String name;
 	private int age;
@@ -32,7 +32,7 @@ public class Member{ // default motionist
 		this.phoneNr = phoneNr;
 		this.address = address;
 
-		memberId = rdm.nextInt(100,10000); // Tjek om memberId er unikt.
+		memberId = 25;//rdm.nextInt(100,10000); // Tjek om memberId er unikt.
 	}
 
 	public double getMemberPrice(){
