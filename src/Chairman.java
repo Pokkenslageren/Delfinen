@@ -1,4 +1,6 @@
 import java.util.*;
+import java.io.*;
+
 public class Chairman{
 
     private final String name;
@@ -16,6 +18,7 @@ public class Chairman{
     public ArrayList<Member> getMembers() {
         return members;
     }
+
 
     public void printMemberInfo(int memberId){ // prints a unique member.
         for (Member m : members){

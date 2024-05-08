@@ -4,8 +4,9 @@ import java.time.format.DateTimeFormatter;
 
 public class Accountant extends Chairman {
 
+    private final String name = "Lasse";
     Scanner scanner = new Scanner(System.in);
-    ArrayList<Member> members = getMembers();
+    // ArrayList<Member> members = getMembers();
 
     public Accountant(String name) {
         super(name);
@@ -15,8 +16,25 @@ public class Accountant extends Chairman {
         return super.getName();
     }
 
-    public void printMemberInfo(int memberId) {
-        super.printMemberInfo(memberId);
+    public void printMemberInfo(int memberId){ // prints a unique member.
+        for (Member m : members){
+            if (m.getMemberId() == memberId){
+                m.printMemberInfo();
+                if(m.getIsBlocked()){
+                    System.out.println("OBS! Medlemsskab blokeret!");
+                }
+                if (m.getIsPaid()){
+                    System.out.println("Medlemsskab: Betalt");
+                } else {
+                    System.out.println("Medlemsskab: Ikke betalt");
+                }
+                if (m.getIsActive()){
+                    System.out.println("Medlemsskab: Aktivt");
+                } else {
+                    System.out.println("Medlemsskab: Passivt");
+                }
+            }
+        }
     }
 
     public void markAsPaid (int memberId) {
