@@ -2,7 +2,7 @@ import java.util.*;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 
-public class Member{ // default motionist
+public class Member implements java.io.Serializable { // default motionist
 	private double memberPrice;
 	protected int memberId;
 	private String dateCreated;

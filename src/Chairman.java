@@ -304,28 +304,27 @@ public class Chairman implements java.io.Serializable {
         }
 
         public void writeToFile(){
-            try {
-                FileOutputStream fileOut = new FileOutputStream("Members.txt");
-                ObjectOutputStream out = new ObjectOutputStream(fileOut);
-                for(Member m : members) {
-                    out.writeObject(m);
+                try (FileOutputStream fileOut = new FileOutputStream("Members.txt");
+                     ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
+
+                    for (Member m : members) {
+                        out.writeObject(m);
+                    }
+
+                    System.out.println("Data gemt i Members.txt");
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
-                out.close();
-                fileOut.close();
-                System.out.println("Data gemt i Members.txt");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
 
         public void readFromFile(){
-            try {
+            try (FileInputStream fileIn = new FileInputStream("Members.txt");
+                 ObjectInputStream in = new ObjectInputStream(fileIn)) {
+
                 FileInputStream fileIn = new FileInputStream("Members.txt");
                 ObjectInputStream in = new ObjectInputStream(fileIn);
                 Member m = (Member) in.readObject();
                 members.add(m);
-                in.close();
-                fileIn.close();
                 
             } catch (IOException e) {
                 e.printStackTrace();
