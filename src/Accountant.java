@@ -17,24 +17,7 @@ public class Accountant extends Chairman {
     }
 
     public void printMemberInfo(int memberId){ // prints a unique member.
-        for (Member m : members){
-            if (m.getMemberId() == memberId){
-                m.printMemberInfo();
-                if(m.getIsBlocked()){
-                    System.out.println("OBS! Medlemsskab blokeret!");
-                }
-                if (m.getIsPaid()){
-                    System.out.println("Medlemsskab: Betalt");
-                } else {
-                    System.out.println("Medlemsskab: Ikke betalt");
-                }
-                if (m.getIsActive()){
-                    System.out.println("Medlemsskab: Aktivt");
-                } else {
-                    System.out.println("Medlemsskab: Passivt");
-                }
-            }
-        }
+        super.printMemberInfo(memberId);
     }
 
     public void markAsPaid (int memberId) {

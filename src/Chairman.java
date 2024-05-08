@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-public class Chairman{
+public class Chairman implements java.io.Serializable {
 
     private final String name;
     ArrayList<Member> members = new ArrayList<>();
@@ -19,9 +19,12 @@ public class Chairman{
         return members;
     }
 
+    public void retrieveContentOfFile (String fileName){  // todo: Deserialization of files
+
+    }
 
     public void printMemberInfo(int memberId){ // prints a unique member.
-        for (Member m : members){
+        for(Member m : members){
             if (m.getMemberId() == memberId){
                 m.printMemberInfo();
                     if(m.getIsBlocked()){
@@ -92,6 +95,7 @@ public class Chairman{
                 System.out.println("Ugyldigt input.");
                 break;
         }
+
     }
         public void removeMember(int memberId){
             for (int i = 0; i <= members.size()-1; i++){
@@ -297,6 +301,46 @@ public class Chairman{
                     System.out.println("ID ikke fundet.");
                 }
             }
+        }
+
+        public void writeToFile(){
+            try {
+                FileOutputStream fileOut = new FileOutputStream("Members.txt");
+                ObjectOutputStream out = new ObjectOutputStream(fileOut);
+                for(Member m : members) {
+                    out.writeObject(m);
+                }
+                out.close();
+                fileOut.close();
+                System.out.println("Data gemt i Members.txt");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        public void readFromFile(){
+            try {
+                FileInputStream fileIn = new FileInputStream("Members.txt");
+                ObjectInputStream in = new ObjectInputStream(fileIn);
+                Member m = (Member) in.readObject();
+                members.add(m);
+                in.close();
+                fileIn.close();
+                
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+
+        public static void main(String[] args){
+            Chairman chairman = new Chairman("Julius");
+            chairman.readFromFile();
+            chairman.addMember();
+            chairman.addMember();
+            chairman.writeToFile();
         }
 
 }
