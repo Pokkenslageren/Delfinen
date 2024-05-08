@@ -4,8 +4,9 @@ import java.time.format.DateTimeFormatter;
 
 public class Accountant extends Chairman {
 
+    private final String name = "Lasse";
     Scanner scanner = new Scanner(System.in);
-    ArrayList<Member> members = getMembers();
+    // ArrayList<Member> members = getMembers();
 
     public Accountant(String name) {
         super(name);
@@ -15,7 +16,7 @@ public class Accountant extends Chairman {
         return super.getName();
     }
 
-    public void printMemberInfo(int memberId) {
+    public void printMemberInfo(int memberId){ // prints a unique member.
         super.printMemberInfo(memberId);
     }
 
