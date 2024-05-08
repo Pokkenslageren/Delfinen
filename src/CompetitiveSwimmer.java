@@ -22,7 +22,7 @@ public class CompetitiveSwimmer extends Member{
         isBreaststroke = flag2 == 1;
         isButterfly = flag3 == 1;
 
-		super.memberId = rdm.nextInt(100,10000); // Tjek om memberId er unikt.
+		super.memberId = rdm.nextInt(100,10000); // todo tjek om memberId er unikt.
 	}
 
 	public ArrayList<Results> getCompResults(){

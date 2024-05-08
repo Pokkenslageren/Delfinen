@@ -136,6 +136,11 @@ public class Member implements java.io.Serializable { // default motionist
 		return false;
 	}
 
+	public boolean isUniqueId(int memberId) {
+		return true;
+		// todo: Lav metode der tjekker om member id er unikt ved oprettelse af nye members. evt. do//while i constructor?
+	}
+
 	public void printMemberInfo(){
 		System.out.println();
 		System.out.println("Member ID: " + memberId);
