@@ -41,7 +41,7 @@ public class Member implements java.io.Serializable { // default motionist
 		this.phoneNr = phoneNr;
 		this.address = address;
 
-		memberId = rdm.nextInt(100,10000); // Tjek om memberId er unikt.
+		memberId = rdm.nextInt(100,10000); // todo Tjek om memberId er unikt.
 	}
 
 	public double getMemberPrice(){
