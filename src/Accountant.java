@@ -56,7 +56,7 @@ public class Accountant extends Chairman {
     }
 
     public void displayPaid() {
-        System.out.println("Viser betalte medlemsskaber:")
+        System.out.println("Viser betalte medlemsskaber:");
         for(Member m : members) {
             if(m.getIsPaid()) {
                 System.out.println("Medlem: " + m.getMemberId() + "- Navn: " + m.getName());
@@ -67,7 +67,7 @@ public class Accountant extends Chairman {
 
 
     public void displayUnpaid() {
-        System.out.println("Viser ubetalte medlemsskaber:")
+        System.out.println("Viser ubetalte medlemsskaber:");
         for(Member m : members) {
             if(!m.getIsPaid()) {
                 System.out.println("Medlem: " + m.getMemberId() + "- Navn: " + m.getName());
@@ -76,7 +76,7 @@ public class Accountant extends Chairman {
     }
 
     public void displayBlocked() {
-        System.out.println("Viser blokerede medlemsskaber:")
+        System.out.println("Viser blokerede medlemsskaber:");
         for(Member m : members) {
             if(m.getIsBlocked()) {
                 System.out.println("Medlem: " + m.getName() + "- Navn: " + m.getName());
