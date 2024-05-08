@@ -132,6 +132,10 @@ public class Member implements java.io.Serializable { // default motionist
 		this.isBlocked = isBlocked;
 	}
 
+	public boolean isCompetitive(){
+		return false;
+	}
+
 	public void printMemberInfo(){
 		System.out.println();
 		System.out.println("Member ID: " + memberId);
@@ -150,7 +154,4 @@ public class Member implements java.io.Serializable { // default motionist
 		System.out.println("Adresse: " + address);
 	}
 
-	public boolean isCompetitive(){
-		return false;
-	}
 }
