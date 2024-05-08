@@ -5,7 +5,7 @@ import java.time.format.DateTimeFormatter;
 public class Member implements java.io.Serializable { // default motionist
 	private double memberPrice;
 	protected int memberId;
-	private String dateCreated;
+	private final String dateCreated;
 	private String dueDate;
 	private String name;
 	private int age;
