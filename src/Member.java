@@ -133,6 +133,8 @@ public class Member implements java.io.Serializable { // default motionist
 	}
 
 	public void printMemberInfo(){
+		System.out.println();
+		System.out.println("Member ID: " + memberId);
 		System.out.println("Navn: " + name);
 		System.out.println("Alder: " + age);
 		if (gender == 1){

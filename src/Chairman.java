@@ -51,6 +51,7 @@ public class Chairman implements java.io.Serializable {
     }
 
     public void addMember() {
+        System.out.println();
         System.out.println("Tryk 1 for motionist, tryk 2 for konkurrencesvømmer.");
         int input = scanner.nextInt();
         switch (input) {
@@ -317,17 +318,22 @@ public class Chairman implements java.io.Serializable {
                 }
         }
 
+        @SuppressWarnings("CallToPrintStackTrace")
         public void readFromFile(){
             try (FileInputStream fileIn = new FileInputStream("Members.txt");
                  ObjectInputStream in = new ObjectInputStream(fileIn)) {
 
-                Member m = (Member) in.readObject();
-                members.add(m);
-                
-            } catch (IOException e) {
-                e.printStackTrace();
+            while(true) {
+                try {
+                    Member m = (Member) in.readObject();
+                    members.add(m);
+                }
+                catch(EOFException e){
+                    break;
+                }
             }
-            catch (ClassNotFoundException e) {
+
+            } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
             }
         }
@@ -335,7 +341,7 @@ public class Chairman implements java.io.Serializable {
         public static void main(String[] args){
             Chairman chairman = new Chairman("Julius");
             chairman.readFromFile();
-            chairman.addMember();
+            chairman.printMembers();
             chairman.addMember();
             chairman.writeToFile();
         }
