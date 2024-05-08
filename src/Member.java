@@ -22,8 +22,8 @@ public class Member implements java.io.Serializable { // default motionist
 
 		LocalDateTime now = LocalDateTime.now();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-dd-MM HH:mm:ss");
-		dateCreated = now.format(formatter).toString();
-		dueDate = now.plusDays(30).format(formatter).toString();
+		dateCreated = now.format(formatter);
+		dueDate = now.plusDays(30).format(formatter);
 
 		if(age < 18){
 			memberPrice = 1000.0;

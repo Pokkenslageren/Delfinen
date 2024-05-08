@@ -26,7 +26,7 @@ public class Accountant extends Chairman {
                 System.out.println("Medlem: " + members.get(i).getMemberId() + " fundet.");
                 LocalDateTime now = LocalDateTime.now().plusYears(1).plusDays(30);
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
-                members.get(i).setDueDate(now.format(formatter).toString());
+                members.get(i).setDueDate(now.format(formatter));
                 System.out.println("Ændring gemt.");
                 System.out.println("Medlemsskab tilhørende medlem: " + members.get(i).getMemberId() + ", navn: " + members.get(i).getName() + " er markeret betalt.");
                 System.out.println("Næste betalingsdato: " + members.get(i).getDueDate());
