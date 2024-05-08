@@ -321,8 +321,6 @@ public class Chairman implements java.io.Serializable {
             try (FileInputStream fileIn = new FileInputStream("Members.txt");
                  ObjectInputStream in = new ObjectInputStream(fileIn)) {
 
-                FileInputStream fileIn = new FileInputStream("Members.txt");
-                ObjectInputStream in = new ObjectInputStream(fileIn);
                 Member m = (Member) in.readObject();
                 members.add(m);
                 
