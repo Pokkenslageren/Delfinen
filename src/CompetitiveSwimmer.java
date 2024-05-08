@@ -18,24 +18,9 @@ public class CompetitiveSwimmer extends Member{
 		super(name, age, gender, phoneNr, address);
 		compResults = new ArrayList<>();
 		trainingResults = new ArrayList<>();
-		if (flag1 == 1){
-			isFreestyle = true;
-		}
-		else {
-			isFreestyle = false;
-		}
-		if (flag2 == 1){
-			isBreaststroke = true;
-		}
-		else {
-			isBreaststroke = false;
-		}
-		if (flag3 == 1){
-			isButterfly = true;
-		}
-		else {
-			isButterfly = false;
-		}
+        isFreestyle = flag1 == 1;
+        isBreaststroke = flag2 == 1;
+        isButterfly = flag3 == 1;
 
 		super.memberId = rdm.nextInt(100,10000); // Tjek om memberId er unikt.
 	}
