@@ -32,7 +32,7 @@ public class Member{ // default motionist
 		this.phoneNr = phoneNr;
 		this.address = address;
 
-		memberId = 25;//rdm.nextInt(100,10000); // Tjek om memberId er unikt.
+		memberId = rdm.nextInt(100,10000); // Tjek om memberId er unikt.
 	}
 
 	public double getMemberPrice(){

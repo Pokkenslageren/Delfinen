@@ -34,7 +34,7 @@ public class CompetitiveSwimmer extends Member{
 			isButterfly = false;
 		}
 
-		super.memberId =  27;//rdm.nextInt(100,10000); // Tjek om memberId er unikt.
+		super.memberId = rdm.nextInt(100,10000); // Tjek om memberId er unikt.
 	}
 
 	public ArrayList<Results> getCompResults(){
