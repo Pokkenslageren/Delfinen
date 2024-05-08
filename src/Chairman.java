@@ -101,7 +101,7 @@ public class Chairman{
         public void editMember(int memberId){
             for (int i = 0; i <= members.size()-1; i++){
                 if (memberId == members.get(i).getMemberId()){
-                    System.out.println("ID fundet.");
+                    System.out.println("Medlem " + members.get(i).getMemberId() + " fundet.");
                     if (members.get(i).isCompetitive() == false){
                         int sentinel = 1;
                         while (sentinel == 1){

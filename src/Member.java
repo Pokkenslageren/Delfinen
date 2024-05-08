@@ -1,9 +1,12 @@
 import java.util.*;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
 
 public class Member{ // default motionist
 	private double memberPrice;
 	protected int memberId;
-	private double dateCreated;
+	private String dateCreated;
+	private String dueDate;
 	private String name;
 	private int age;
 	private int gender;
@@ -15,7 +18,12 @@ public class Member{ // default motionist
 
 	Random rdm = new Random();
 
-	public Member(String name, int age, int gender, int phoneNr, String address){ // Constructor m. stamoplysninger
+	public Member(String name, int age, int gender, int phoneNr, String address){
+
+		LocalDateTime now = LocalDateTime.now();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-dd-MM HH:mm:ss");
+		dateCreated = now.format(formatter).toString();
+		dueDate = now.plusDays(30).format(formatter).toString();
 
 		if(age < 18){
 			memberPrice = 1000.0;
@@ -48,8 +56,16 @@ public class Member{ // default motionist
 		return memberId;
 	}
 
-	public double getDateCreated() {
+	public String getDateCreated() {
 		return dateCreated;
+	}
+
+	public String getDueDate() {
+		return dueDate;
+	}
+
+	public void setDueDate(String dueDate) {
+		this.dueDate = dueDate;
 	}
 
 	public String getName(){
