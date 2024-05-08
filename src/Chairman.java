@@ -110,7 +110,7 @@ public class Chairman implements java.io.Serializable {
             for (int i = 0; i < members.size(); i++){
                 if (memberId == members.get(i).getMemberId()){
                     System.out.println("Medlem " + members.get(i).getMemberId() + " fundet.");
-                    if (members.get(i).isCompetitive() == false){
+                    if (!members.get(i).isCompetitive()){
                         int sentinel = 1;
                         while (sentinel == 1){
                             members.get(i).printMemberInfo();
