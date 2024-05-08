@@ -1,4 +1,4 @@
 import java.util.*;
-public class Accountant{
+public class Accountant {
 
 }
