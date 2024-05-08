@@ -16,6 +16,7 @@ public class Member{ // default motionist
 	Random rdm = new Random();
 
 	public Member(String name, int age, int gender, int phoneNr, String address){ // Constructor m. stamoplysninger
+
 		if(age < 18){
 			memberPrice = 1000.0;
 		}

@@ -99,6 +99,7 @@ public class Chairman{
                             System.out.println("3: Køn.");
                             System.out.println("4: Telefonnummer.");
                             System.out.println("5: Adresse.");
+                            System.out.println("6: Medlemsskab.");
                             System.out.println("0: Afslut.");
 
                             int input = scanner.nextInt();
@@ -149,6 +150,15 @@ public class Chairman{
                                     System.out.println();
                                     break;
 
+                                case 6:
+                                    System.out.println("Nuværende medlemsskab: " + members.get(i).getIsActive());
+                                    System.out.println("Indtast det nye valg: " );
+                                    boolean isActive = scanner.nextBoolean();
+                                    members.get(i).setIsActive(isActive);
+                                    System.out.println("Ændring gemt: " + members.get(i).getIsActive());
+                                    System.out.println();
+                                    break;
+
                                 default:
                                     sentinel = 0;
                                     break;
@@ -165,9 +175,10 @@ public class Chairman{
                             System.out.println("3: Køn.");
                             System.out.println("4: Telefonnummer.");
                             System.out.println("5: Adresse.");
-                            System.out.println("6: Freestyle aktivitet.");
-                            System.out.println("7: Brystsvømning aktivitet.");
-                            System.out.println("8: Butterfly aktivitet.");
+                            System.out.println("6: Medlemsskab.");
+                            System.out.println("7: Freestyle aktivitet.");
+                            System.out.println("8: Brystsvømning aktivitet.");
+                            System.out.println("9: Butterfly aktivitet.");
                             System.out.println("0: Afslut");
 
                             int input = scanner.nextInt();
@@ -219,6 +230,15 @@ public class Chairman{
                                     break;
 
                                 case 6:
+                                    System.out.println("Nuværende medlemsskab: " + members.get(i).getIsActive());
+                                    System.out.println("Indtast det nye valg: " );
+                                    boolean isActive = scanner.nextBoolean();
+                                    members.get(i).setIsActive(isActive);
+                                    System.out.println("Ændring gemt: " + members.get(i).getIsActive());
+                                    System.out.println();
+                                    break;
+
+                                case 7:
                                     if(members.get(i) instanceof CompetitiveSwimmer) {
                                         System.out.println("Nuværende freestyle aktivitet: " + (((CompetitiveSwimmer) members.get(i)).getIsFreestyle()));
                                         System.out.println("Indtast det nye valg: ");
@@ -229,7 +249,7 @@ public class Chairman{
                                     }
                                     break;
 
-                                case 7:
+                                case 8:
                                     if(members.get(i) instanceof CompetitiveSwimmer) {
                                         System.out.println("Nuværende brystsvømning aktivitet: " + (((CompetitiveSwimmer) members.get(i)).getIsBreaststroke()));
                                         System.out.println("Indtast det nye valg: ");
@@ -240,7 +260,7 @@ public class Chairman{
                                     }
                                     break;
 
-                                case 8:
+                                case 9:
                                     if(members.get(i) instanceof CompetitiveSwimmer) {
                                         System.out.println("Nuværende butterfly aktivitet: " + (((CompetitiveSwimmer) members.get(i)).getIsButterfly()));
                                         System.out.println("Indtast det nye valg: ");
