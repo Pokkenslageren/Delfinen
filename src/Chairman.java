@@ -99,6 +99,7 @@ public class Chairman{
                             System.out.println("3: Køn.");
                             System.out.println("4: Telefonnummer.");
                             System.out.println("5: Adresse.");
+                            System.out.println("0: Afslut.");
 
                             int input = scanner.nextInt();
                             switch (input){
@@ -109,6 +110,7 @@ public class Chairman{
                                     String name = scanner.next();
                                     members.get(i).setName(name);
                                     System.out.println("Ændring gemt: " + members.get(i).getName());
+                                    System.out.println();
                                     break;
 
                                 case 2:
@@ -117,6 +119,7 @@ public class Chairman{
                                     int age = scanner.nextInt();
                                     members.get(i).setAge(age);
                                     System.out.println("Ændring gemt: " + members.get(i).getAge());
+                                    System.out.println();
                                     break;
 
                                 case 3:
@@ -125,6 +128,7 @@ public class Chairman{
                                     int gender = scanner.nextInt();
                                     members.get(i).setGender(gender);
                                     System.out.println("Ændring gemt: " + members.get(i).getGender());
+                                    System.out.println();
                                     break;
 
                                 case 4:
@@ -133,6 +137,7 @@ public class Chairman{
                                     int phoneNr = scanner.nextInt();
                                     members.get(i).setPhoneNr(phoneNr);
                                     System.out.println("Ændring gemt: " + members.get(i).getPhoneNr());
+                                    System.out.println();
                                     break;
 
                                 case 5:
@@ -141,6 +146,7 @@ public class Chairman{
                                     String address = scanner.next();
                                     members.get(i).setAddress(address);
                                     System.out.println("Ændring gemt: " + members.get(i).getAddress());
+                                    System.out.println();
                                     break;
 
                                 default:
@@ -162,6 +168,7 @@ public class Chairman{
                             System.out.println("6: Freestyle aktivitet.");
                             System.out.println("7: Brystsvømning aktivitet.");
                             System.out.println("8: Butterfly aktivitet.");
+                            System.out.println("0: Afslut");
 
                             int input = scanner.nextInt();
                             switch (input){
@@ -172,6 +179,7 @@ public class Chairman{
                                     String name = scanner.next();
                                     members.get(i).setName(name);
                                     System.out.println("Ændring gemt: " + members.get(i).getName());
+                                    System.out.println();
                                     break;
 
                                 case 2:
@@ -180,6 +188,7 @@ public class Chairman{
                                     int age = scanner.nextInt();
                                     members.get(i).setAge(age);
                                     System.out.println("Ændring gemt: " + members.get(i).getAge());
+                                    System.out.println();
                                     break;
 
                                 case 3:
@@ -188,6 +197,7 @@ public class Chairman{
                                     int gender = scanner.nextInt();
                                     members.get(i).setGender(gender);
                                     System.out.println("Ændring gemt: " + members.get(i).getGender());
+                                    System.out.println();
                                     break;
 
                                 case 4:
@@ -196,6 +206,7 @@ public class Chairman{
                                     int phoneNr = scanner.nextInt();
                                     members.get(i).setPhoneNr(phoneNr);
                                     System.out.println("Ændring gemt: " + members.get(i).getPhoneNr());
+                                    System.out.println();
                                     break;
 
                                 case 5:
@@ -204,6 +215,7 @@ public class Chairman{
                                     String address = scanner.next();
                                     members.get(i).setAddress(address);
                                     System.out.println("Ændring gemt: " + members.get(i).getAddress());
+                                    System.out.println();
                                     break;
 
                                 case 6:
@@ -213,6 +225,7 @@ public class Chairman{
                                         boolean freestyle = scanner.nextBoolean(); // OBS DATATYPE
                                         ((CompetitiveSwimmer) members.get(i)).setIsFreestyle(freestyle);
                                         System.out.println("Ændring gemt: " + ((CompetitiveSwimmer) members.get(i)).getIsFreestyle());
+                                        System.out.println();
                                     }
                                     break;
 
@@ -223,6 +236,7 @@ public class Chairman{
                                         boolean breaststroke = scanner.nextBoolean(); // OBS DATATYPE
                                         ((CompetitiveSwimmer) members.get(i)).setIsBreaststroke(breaststroke);
                                         System.out.println("Ændring gemt: " + ((CompetitiveSwimmer) members.get(i)).getIsBreaststroke());
+                                        System.out.println();
                                     }
                                     break;
 
