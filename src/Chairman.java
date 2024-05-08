@@ -318,7 +318,6 @@ public class Chairman implements java.io.Serializable {
                 }
         }
 
-        @SuppressWarnings("CallToPrintStackTrace")
         public void readFromFile(){
             try (FileInputStream fileIn = new FileInputStream("Members.txt");
                  ObjectInputStream in = new ObjectInputStream(fileIn)) {
