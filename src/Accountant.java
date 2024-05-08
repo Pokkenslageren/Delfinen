@@ -14,7 +14,6 @@ public class Accountant extends Chairman {
 
     public void printMemberInfo(int memberId) {
         super.printMemberInfo(memberId);
-
     }
 
     public void editMember (int memberId) {
