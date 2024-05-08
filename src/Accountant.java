@@ -21,7 +21,7 @@ public class Accountant extends Chairman {
     }
 
     public void markAsPaid (int memberId) {
-        for(int i = 0; i < members.size()-1; i++) {
+        for(int i = 0; i < members.size(); i++) {
             if(memberId==members.get(i).getMemberId()) {
                 System.out.println("Medlem: " + members.get(i).getMemberId() + " fundet.");
                 LocalDateTime now = LocalDateTime.now().plusYears(1).plusDays(30);
@@ -35,7 +35,7 @@ public class Accountant extends Chairman {
     }
 
     public void blockMember (int memberId) {
-        for(int i = 0; i < members.size()-1; i++) {
+        for(int i = 0; i < members.size(); i++) {
             if(memberId==members.get(i).getMemberId()) {
                 System.out.println("Medlem: " + members.get(i).getMemberId() + " fundet.");
                 members.get(i).setIsBlocked(true);
@@ -46,7 +46,7 @@ public class Accountant extends Chairman {
     }
 
     public void unblockMember (int memberId) {
-        for(int i = 0; i < members.size()-1; i++) {
+        for(int i = 0; i < members.size(); i++) {
             if(memberId==members.get(i).getMemberId()) {
                 System.out.println("Medlem: " + members.get(i).getMemberId() + " fundet.");
                 members.get(i).setIsBlocked(false);

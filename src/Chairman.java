@@ -99,7 +99,7 @@ public class Chairman implements java.io.Serializable {
 
     }
         public void removeMember(int memberId){
-            for (int i = 0; i <= members.size()-1; i++){
+            for (int i = 0; i < members.size(); i++){
                 if (memberId == members.get(i).getMemberId()){
                     members.remove(members.get(i)); // OBS
                 }
@@ -107,7 +107,7 @@ public class Chairman implements java.io.Serializable {
         }
 
         public void editMember(int memberId){
-            for (int i = 0; i <= members.size()-1; i++){
+            for (int i = 0; i < members.size(); i++){
                 if (memberId == members.get(i).getMemberId()){
                     System.out.println("Medlem " + members.get(i).getMemberId() + " fundet.");
                     if (members.get(i).isCompetitive() == false){
