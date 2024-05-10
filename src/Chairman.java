@@ -3,18 +3,39 @@ import java.io.*;
 
 public class Chairman implements java.io.Serializable {
 
+    /**
+     * The name of the chairman
+     */
     private final String name;
+    /**
+     * List containing all members in the club
+     */
     ArrayList<Member> members = new ArrayList<>();
+    /**
+     * Scanner object used to handle input
+     */
     Scanner scanner = new Scanner(System.in);
 
+    /**
+     * Constructor for the Chairman class
+     * @param name The name of the chairman
+     */
     public Chairman(String name){
         this.name = name;
     }
 
+    /**
+     * Getter for name
+     * @return name of the chairman
+     */
     public String getName(){
         return name;
     }
 
+    /**
+     * Getter for the list of members
+     * @return ArrayList of member objects
+     */
     public ArrayList<Member> getMembers() {
         return members;
     }
@@ -23,6 +44,10 @@ public class Chairman implements java.io.Serializable {
 
     }
 
+    /**
+     * Prints all member information, based on the given ID
+     * @param memberId The member ID given
+     */
     public void printMemberInfo(int memberId){ // prints a unique member.
         for(Member m : members){
             if (m.getMemberId() == memberId){
@@ -44,12 +69,18 @@ public class Chairman implements java.io.Serializable {
         }
     }
 
+    /**
+     * Prints information for all members of the club
+     */
     public void printMembers(){ // prints entire member-list.
         for (Member m : members){
             m.printMemberInfo();
         }
     }
 
+    /**
+     * Adds a new member to the members list
+     */
     public void addMember() {
         System.out.println();
         System.out.println("Tryk 1 for motionist, tryk 2 for konkurrencesvømmer.");
@@ -98,7 +129,12 @@ public class Chairman implements java.io.Serializable {
         }
 
     }
-        public void removeMember(int memberId){
+
+    /**
+     * Removes a member from the members list, given a member ID
+     * @param memberId The ID for the member you want to remove
+     */
+    public void removeMember(int memberId){
             for (int i = 0; i <= members.size()-1; i++){
                 if (memberId == members.get(i).getMemberId()){
                     members.remove(members.get(i)); // OBS
@@ -106,7 +142,12 @@ public class Chairman implements java.io.Serializable {
             }
         }
 
-        public void editMember(int memberId){
+    /**
+     * Edits information on a member, given member ID
+     * Distinguishes between regular member (1) and competitive swimmer (2)
+     * @param memberId The member ID of the member you want to edit
+     */
+    public void editMember(int memberId){
             for (int i = 0; i <= members.size()-1; i++){
                 if (memberId == members.get(i).getMemberId()){
                     System.out.println("Medlem " + members.get(i).getMemberId() + " fundet.");
@@ -304,7 +345,10 @@ public class Chairman implements java.io.Serializable {
             }
         }
 
-        public void writeToFile(){
+    /**
+     * Serializes all objects in the members list to file "Members"
+     */
+    public void writeToFile(){
                 try (FileOutputStream fos = new FileOutputStream("Members");
                      ObjectOutputStream oos = new ObjectOutputStream(fos)) {
 
@@ -316,7 +360,10 @@ public class Chairman implements java.io.Serializable {
                 }
         }
 
-        public void readFromFile(){
+    /**
+     * Deserializes all members objects from the "Members" file and puts the objects in list members
+     */
+    public void readFromFile(){
             try (FileInputStream fis = new FileInputStream("Members");
                  ObjectInputStream ois = new ObjectInputStream(fis);) {
 
