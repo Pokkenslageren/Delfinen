@@ -7,10 +7,12 @@ public class Chairman implements java.io.Serializable {
      * The name of the chairman
      */
     private final String name;
+
     /**
      * List containing all members in the club
      */
     ArrayList<Member> members = new ArrayList<>();
+
     /**
      * Scanner object used to handle input
      */
@@ -386,5 +388,4 @@ public class Chairman implements java.io.Serializable {
 /*            chairman.addMember();
             chairman.writeToFile();*/
         }
-
 }

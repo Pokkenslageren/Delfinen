@@ -298,7 +298,7 @@ public class Member implements java.io.Serializable { // default motionist
 
 	/**
 	 * Flag to show whether member is a competitive swimmer or regular member
-	 * @return Whether member is competitive or regular
+	 * @return Member is regular
 	 */
 	public boolean isCompetitive(){
 		return false;

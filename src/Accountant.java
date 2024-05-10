@@ -42,7 +42,7 @@ public class Accountant extends Chairman {
 
     /**
      * Changes the isPaid and dueDate variables of the given member.
-     * @param memberId
+     * @param memberId The id of the member
      */
     public void markAsPaid (int memberId) { //markAsPaid ændrer ikke isPaid for det givne member lige nu?
         for(int i = 0; i < members.size()-1; i++) {

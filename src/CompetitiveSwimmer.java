@@ -8,20 +8,22 @@ public class CompetitiveSwimmer extends Member{
 	 * List of competition results for the competitive swimmer
 	 */
 	ArrayList<Results> compResults;
+
 	/**
 	 * List of training results for the competitive swimmer
 	 */
 	ArrayList<Results> trainingResults;
 
-
 	/**
 	 * Denotes whether the competitive swimmer competes in freestyle
 	 */
 	private boolean isFreestyle = true;
+
 	/**
 	 * Denotes whether the competitive swimmer competes in breast stroke
 	 */
 	private boolean isBreaststroke = true;
+
 	/**
 	 * Denotes whether the competitive swimmer competes in butterfly
 	 */
@@ -165,6 +167,10 @@ public class CompetitiveSwimmer extends Member{
 		}
 	}
 
+	/**
+	 * Flag to show whether member is a competitive swimmer or regular member
+	 * @return Member is competitive
+	 */
 	public boolean isCompetitive(){
 		return true;
 	}
