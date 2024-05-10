@@ -7,50 +7,60 @@ public class Member implements java.io.Serializable { // default motionist
 	 * The yearly subscription price for a member.
 	 */
 	private double memberPrice;
+
 	/**
 	 * A unique ID number for a member.
 	 */
 	protected int memberId;
+
 	/**
 	 * The date at which a member object is created.
 	 */
 	private String dateCreated;
+
 	/**
 	 * The date at which the annual subscription payment is due.
 	 */
 	private String dueDate;
+
 	/**
 	 * The name of the member.
 	 */
 	private String name;
+
 	/**
 	 * The age of the member.
 	 */
 	private int age;
+
 	/**
 	 * The gender of the member.
 	 */
 	private int gender;
+
 	/**
 	 * The address of the member.
 	 */
 	private String address;
+
 	/**
 	 * The phone number of the member.
 	 */
 	private int phoneNr;
+
 	/**
 	 * Indicates if membership is active or passive.
 	 */
 	private boolean isActive;
+
 	/**
 	 * Indicates whether the membership has been paid.
 	 */
 	private boolean isPaid;
+
 	/**
 	 * Indicates whether the member is blocked.
 	 */
-
 	private boolean isBlocked;
 
 	Random rdm = new Random();
