@@ -305,44 +305,39 @@ public class Chairman implements java.io.Serializable {
         }
 
         public void writeToFile(){
-                try (FileOutputStream fileOut = new FileOutputStream("Members.txt");
-                     ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
+                try (FileOutputStream fos = new FileOutputStream("Members");
+                     ObjectOutputStream oos = new ObjectOutputStream(fos)) {
 
-                    for (Member m : members) {
-                        out.writeObject(m);
-                    }
+                    oos.writeObject(members);
 
-                    System.out.println("Data gemt i Members.txt");
+                    System.out.println("Data gemt i Members");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
         }
 
         public void readFromFile(){
-            try (FileInputStream fileIn = new FileInputStream("Members.txt");
-                 ObjectInputStream in = new ObjectInputStream(fileIn)) {
+            try (FileInputStream fis = new FileInputStream("Members");
+                 ObjectInputStream ois = new ObjectInputStream(fis);) {
 
-            while(true) {
-                try {
-                    Member m = (Member) in.readObject();
-                    members.add(m);
-                }
-                catch(EOFException e){
-                    break;
-                }
+                members = (ArrayList<Member>) ois.readObject();
+
+
             }
 
-            } catch (IOException | ClassNotFoundException e) {
-                e.printStackTrace();
-            }
+            catch(IOException e){
+                 e.printStackTrace();
+           }catch (ClassNotFoundException c){
+                 c.printStackTrace();
+          }
         }
 
         public static void main(String[] args){
             Chairman chairman = new Chairman("Julius");
             chairman.readFromFile();
             chairman.printMembers();
-            chairman.addMember();
-            chairman.writeToFile();
+/*            chairman.addMember();
+            chairman.writeToFile();*/
         }
 
 }
