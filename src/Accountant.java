@@ -40,17 +40,19 @@ public class Accountant extends Chairman {
         super.printMemberInfo(memberId);
     }
 
+
     /**
      * Changes the isPaid and dueDate variables of the given member.
      * @param memberId The id of the member
      */
     public void markAsPaid (int memberId) { //markAsPaid ændrer ikke isPaid for det givne member lige nu?
         for(int i = 0; i < members.size()-1; i++) {
+
             if(memberId==members.get(i).getMemberId()) {
                 System.out.println("Medlem: " + members.get(i).getMemberId() + " fundet.");
                 LocalDateTime now = LocalDateTime.now().plusYears(1).plusDays(30);
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
-                members.get(i).setDueDate(now.format(formatter).toString());
+                members.get(i).setDueDate(now.format(formatter));
                 System.out.println("Ændring gemt.");
                 System.out.println("Medlemsskab tilhørende medlem: " + members.get(i).getMemberId() + ", navn: " + members.get(i).getName() + " er markeret betalt.");
                 System.out.println("Næste betalingsdato: " + members.get(i).getDueDate());
@@ -63,7 +65,7 @@ public class Accountant extends Chairman {
      * @param memberId The ID of the given member
      */
     public void blockMember (int memberId) {
-        for(int i = 0; i < members.size()-1; i++) {
+        for(int i = 0; i < members.size(); i++) {
             if(memberId==members.get(i).getMemberId()) {
                 System.out.println("Medlem: " + members.get(i).getMemberId() + " fundet.");
                 members.get(i).setIsBlocked(true);
@@ -78,7 +80,7 @@ public class Accountant extends Chairman {
      * @param memberId ID of the given member
      */
     public void unblockMember (int memberId) {
-        for(int i = 0; i < members.size()-1; i++) {
+        for(int i = 0; i < members.size(); i++) {
             if(memberId==members.get(i).getMemberId()) {
                 System.out.println("Medlem: " + members.get(i).getMemberId() + " fundet.");
                 members.get(i).setIsBlocked(false);

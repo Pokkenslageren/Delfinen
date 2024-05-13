@@ -13,6 +13,7 @@ public class Member implements java.io.Serializable { // default motionist
 	 */
 	protected int memberId;
 
+
 	/**
 	 * The date at which a member object is created.
 	 */
@@ -21,6 +22,7 @@ public class Member implements java.io.Serializable { // default motionist
 	/**
 	 * The date at which the annual subscription payment is due.
 	 */
+
 	private String dueDate;
 
 	/**
@@ -77,8 +79,8 @@ public class Member implements java.io.Serializable { // default motionist
 
 		LocalDateTime now = LocalDateTime.now();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-dd-MM HH:mm:ss");
-		dateCreated = now.format(formatter).toString();
-		dueDate = now.plusDays(30).format(formatter).toString();
+		dateCreated = now.format(formatter);
+		dueDate = now.plusDays(30).format(formatter);
 
 		if(age < 18){
 			memberPrice = 1000.0;
@@ -96,7 +98,7 @@ public class Member implements java.io.Serializable { // default motionist
 		this.phoneNr = phoneNr;
 		this.address = address;
 
-		memberId = rdm.nextInt(100,10000); // Tjek om memberId er unikt.
+		memberId = rdm.nextInt(100,10000); // todo Tjek om memberId er unikt.
 	}
 
 	/**
@@ -275,9 +277,21 @@ public class Member implements java.io.Serializable { // default motionist
 		this.isBlocked = isBlocked;
 	}
 
+
 	/**
 	 * Prints all available info on the member.
 	 */
+
+	public boolean isCompetitive(){
+		return false;
+	}
+
+	public boolean isUniqueId(int memberId) {
+		return true;
+		// todo: Lav metode der tjekker om member id er unikt ved oprettelse af nye members. evt. do//while i constructor?
+	}
+
+
 	public void printMemberInfo(){
 		System.out.println();
 		System.out.println("Member ID: " + memberId);
@@ -296,6 +310,7 @@ public class Member implements java.io.Serializable { // default motionist
 		System.out.println("Adresse: " + address);
 	}
 
+
 	/**
 	 * Flag to show whether member is a competitive swimmer or regular member
 	 * @return Member is regular
@@ -303,4 +318,5 @@ public class Member implements java.io.Serializable { // default motionist
 	public boolean isCompetitive(){
 		return false;
 	}
+
 }

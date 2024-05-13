@@ -132,17 +132,20 @@ public class Chairman implements java.io.Serializable {
 
     }
 
+
     /**
      * Removes a member from the members list, given a member ID
      * @param memberId The ID for the member you want to remove
      */
     public void removeMember(int memberId){
             for (int i = 0; i <= members.size()-1; i++){
+
                 if (memberId == members.get(i).getMemberId()){
                     members.remove(members.get(i)); // OBS
                 }
             }
         }
+
 
     /**
      * Edits information on a member, given member ID
@@ -151,9 +154,10 @@ public class Chairman implements java.io.Serializable {
      */
     public void editMember(int memberId){
             for (int i = 0; i <= members.size()-1; i++){
+
                 if (memberId == members.get(i).getMemberId()){
                     System.out.println("Medlem " + members.get(i).getMemberId() + " fundet.");
-                    if (members.get(i).isCompetitive() == false){
+                    if (!members.get(i).isCompetitive()){
                         int sentinel = 1;
                         while (sentinel == 1){
                             members.get(i).printMemberInfo();
