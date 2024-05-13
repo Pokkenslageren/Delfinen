@@ -84,6 +84,7 @@ public class Chairman implements java.io.Serializable {
      * Adds a new member to the members list
      */
     public void addMember() {
+        Random rdm = new Random();
         System.out.println();
         System.out.println("Tryk 1 for motionist, tryk 2 for konkurrencesvømmer.");
         int input = scanner.nextInt();
@@ -101,7 +102,15 @@ public class Chairman implements java.io.Serializable {
                 System.out.println("Indtast addresse: ");
                 String address = scanner.next();
                 Member m = new Member(name, age, gender, phoneNr, address);
-                members.add(m);
+                do {
+                    for (Member mem : members) {
+                        if (!(m.getMemberId() == mem.getMemberId())) {
+                            members.add(m);
+                            m.setIsUnique(true);
+                        }
+                        else{m.setMemberId(rdm.nextInt(1000, 10000));}
+                    }
+                }while(!m.getIsUnique());
                 break;
 
             case 2:
@@ -389,7 +398,7 @@ public class Chairman implements java.io.Serializable {
             Chairman chairman = new Chairman("Julius");
             chairman.readFromFile();
             chairman.printMembers();
-/*            chairman.addMember();
-            chairman.writeToFile();*/
+            //chairman.addMember();
+            //chairman.writeToFile();
         }
 }

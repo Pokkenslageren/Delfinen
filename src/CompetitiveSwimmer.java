@@ -159,4 +159,12 @@ public class CompetitiveSwimmer extends Member{
 	public boolean isCompetitive(){
 		return true;
 	}
+
+	public void addCompResult(Results result){
+		compResults.add(result);
+	}
+
+	public void addTrainingResult(Results result){
+		trainingResults.add(result);
+	}
 }

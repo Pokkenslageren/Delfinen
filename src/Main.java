@@ -15,9 +15,9 @@ public class Main{
 
 	public void createFile() {
 		try {
-			File file = new File("Members.txt");
-			File file2 = new File("TrainingResults.txt");
-			File file3 = new File("CompResults.txt");
+			File file = new File("Members");
+			File file2 = new File("TrainingResults");
+			File file3 = new File("CompResults");
 			if (file.createNewFile())
 				System.out.println("File Created");
 			if (file2.createNewFile())
