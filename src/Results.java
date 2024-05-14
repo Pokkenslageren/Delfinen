@@ -66,4 +66,12 @@ public class Results {
         public boolean getIsUnique () {
             return isUnique;
         }
+
+        public int getResultId(){
+            return resultId;
+        }
+
+        public void setResultId(int resultId){
+            this.resultId = resultId;
+        }
     }
