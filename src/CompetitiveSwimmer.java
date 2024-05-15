@@ -2,7 +2,8 @@ import java.util.*;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 
-public class CompetitiveSwimmer extends Member{
+public class CompetitiveSwimmer extends Member implements java.io.Serializable{
+	private static final long serialVersionUID = 6529685098267757680L;
 
 	/**
 	 * List of competition results for the competitive swimmer
@@ -47,9 +48,9 @@ public class CompetitiveSwimmer extends Member{
 		super(name, age, gender, phoneNr, address);
 		compResults = new ArrayList<>();
 		trainingResults = new ArrayList<>();
-        isFreestyle = flag1 == 1;
-        isBreaststroke = flag2 == 1;
-        isButterfly = flag3 == 1;
+		isFreestyle = flag1 == 1;
+		isBreaststroke = flag2 == 1;
+		isButterfly = flag3 == 1;
 
 		super.memberId = rdm.nextInt(100,10000); // todo tjek om memberId er unikt.
 	}

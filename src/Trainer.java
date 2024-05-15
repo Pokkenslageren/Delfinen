@@ -1,9 +1,11 @@
 import java.lang.reflect.Array;
 import java.util.*;
 import java.io.*;
-public class Trainer extends Chairman {
-    private final String name = "Jon";
-    ArrayList<Member> members = new ArrayList<>();
+public class Trainer extends Chairman implements java.io.Serializable {
+    private static final long serialVersionUID = 6529685098267757680L; //Giver et konstant ID på tværs af serialization instanser.
+    //private final String name = "Jon"; // skal fjernes
+    //ArrayList<Member> members = readFromFile2();//new ArrayList<>();
+    Scanner scanner = new Scanner(System.in);
 
     public Trainer(String name) {
         super(name);
@@ -11,6 +13,7 @@ public class Trainer extends Chairman {
     }
 
     public void printJunior() {
+        //readFromFile();
         for (Member m : members) {
             if (m.getAge() < 18 && m instanceof CompetitiveSwimmer) {
                 m.printMemberInfo();
@@ -26,12 +29,16 @@ public class Trainer extends Chairman {
         }
     }
 
-    public void addTrainingResults(int memberId) {
-        Scanner scanner = new Scanner(System.in);
+    public void addTrainingResults() {
+        System.out.println("Indtast medlemsID");
+        int memberId = scanner.nextInt();
+        System.out.println("Indtast tid");
         double time = scanner.nextDouble();
-        String competition = scanner.next();
+        String competition = "Træning";
+        System.out.println("Indtast placering");
         int placement = scanner.nextInt();
         boolean isCompetition = false;
+        System.out.println("Indtast disciplin");
         String discipline = scanner.next();
         for (int i = 0; i < members.size(); i++) {
             if (memberId == members.get(i).getMemberId() && members.get(i) instanceof CompetitiveSwimmer) {
@@ -42,12 +49,17 @@ public class Trainer extends Chairman {
         }
     }
 
-    public void addCompResults(int memberId){
-        Scanner scanner = new Scanner(System.in);
+    public void addCompResults(){
+        System.out.println("Indtast medlemsID");
+        int memberId = scanner.nextInt();
+        System.out.println("Tid?");
         double time = scanner.nextDouble();
+        System.out.println("Konkurrence?");
         String competition = scanner.next();
+        System.out.println("Placering?");
         int placement = scanner.nextInt();
         boolean isCompetition = true;
+        System.out.println("Disciplin?");
         String discipline = scanner.next();
         for (int i = 0; i < members.size(); i++) {
             if (memberId == members.get(i).getMemberId() && members.get(i) instanceof CompetitiveSwimmer) {
@@ -56,23 +68,48 @@ public class Trainer extends Chairman {
                 System.out.println("Resultat tilføjet til konkurrenceresultater ");
             }
         }
+        //writeToFile();
     }
 
-    public void removeResults(int memberId) {
-        for (int i = 0; i < members.size(); i++) {
-            if (memberId == members.get(i).getMemberId() && members.get(i) instanceof CompetitiveSwimmer) {
+    public void removeResults() {
+        System.out.println("Indtast medlems-ID: ");
+        int memberId = scanner.nextInt();
+        for (int k = 0; k < members.size(); k++) {
+            if (memberId == members.get(k).getMemberId() && members.get(k) instanceof CompetitiveSwimmer) {
+                System.out.print("Tast 1 for at fjerne et konkurrenceresultat. \nTast 2 for at fjerne et træningsresultat.");
                 int choice = scanner.nextInt();
                 switch (choice) {
                     case 1:
-                        printCompResults(memberId);
-                        int input = scanner.nextInt();
-                        ((CompetitiveSwimmer) members.get(i)).getCompResults().remove(input);
+                        printCompResults();
+                        System.out.println("Indtast resultats-ID: ");
+                        int resultId = scanner.nextInt();
+                        for (int i = 0; i < ((CompetitiveSwimmer) members.get(i)).getCompResults().size(); i++){
+                            if (resultId == ((CompetitiveSwimmer) members.get(i)).getCompResults().get(i).getResultId()){
+                                //((CompetitiveSwimmer) members.get(i)).getCompResults().removeIf(((CompetitiveSwimmer) members.get(i)).getCompResults().get(i) -> ((CompetitiveSwimmer) members.get(i)).getCompResults().get(i).getResultId() == resultId);
+                                //((CompetitiveSwimmer) members.get(i)).getCompResults().removeIf(result -> result.getResultId() == resultId);
+                                ((CompetitiveSwimmer) members.get(i)).getCompResults().remove(((CompetitiveSwimmer) members.get(i)).getCompResults().get(i));
+                                System.out.println("Resultat med ID: " + resultId + ", er nu fjernet.");
+                            }
+                            else {
+                                System.out.println("Resultat kunne ikke findes.");
+                            }
+                        }
                         break;
 
                     case 2:
-                        printTrainingResults(memberId);
-                        int input2 = scanner.nextInt();
-                        ((CompetitiveSwimmer) members.get(i)).getTrainingResults().remove(input2);
+                        printTrainingResults();
+                        System.out.println("Indtast resultats-ID: ");
+                        int resultId2 = scanner.nextInt();
+                        for (int j = 0; j < ((CompetitiveSwimmer) members.get(j)).getTrainingResults().size(); j++){
+                            if (resultId2 == ((CompetitiveSwimmer) members.get(j)).getTrainingResults().get(j).getResultId()){
+                                //((CompetitiveSwimmer) members.get(j)).getTrainingResults().removeIf(result -> result.getResultId() == resultId2);
+                                ((CompetitiveSwimmer) members.get(j)).getTrainingResults().remove(((CompetitiveSwimmer) members.get(j)).getTrainingResults().get(j));
+                                System.out.println("Resultat med ID: " + resultId2 + ", er nu fjernet.");
+                            }
+                            else {
+                                System.out.println("Resultat kunne ikke findes.");
+                            }
+                        }
                         break;
 
                     default:
@@ -83,21 +120,27 @@ public class Trainer extends Chairman {
         scanner.close();
     }
 
-    public void printCompResults(int memberId){
+    public void printCompResults(){
+        System.out.print("Indtast medlemsID");
+        int memberId = scanner.nextInt();
         for (Member m : members){
             if (memberId == m.getMemberId() && m instanceof CompetitiveSwimmer){
                 for (Results r : ((CompetitiveSwimmer) m).getCompResults()){
-                    System.out.println(r.getResultId() + r.getCompetition() + r.getDiscipline() + r.getTime() + r.getPlacement());
+                    System.out.println( "ResultatsID: " + r.getResultId() + ", " + "Stævne: " + r.getCompetition() + ", " + "Disciplin: " + r.getDiscipline() +", " + "Tid: " + r.getTime() + ", " + "Placering: " + r.getPlacement());
+                    System.out.println();
                 }
             }
         }
     }
 
-    public void printTrainingResults(int memberId){
+    public void printTrainingResults(){
+        System.out.print("Indtast medlemsID");
+        int memberId = scanner.nextInt();
         for (Member m : members){
             if (memberId == m.getMemberId() && m instanceof CompetitiveSwimmer){
                 for (Results r : ((CompetitiveSwimmer) m).getTrainingResults()){
-                    System.out.println(r.getResultId() + r.getCompetition() + r.getDiscipline() + r.getTime() + r.getPlacement());
+                    System.out.println( "ResultatsID: " + r.getResultId() + ", " + "Stævne: " + r.getCompetition() + ", " + "Disciplin: " + r.getDiscipline() +", " + "Tid: " + r.getTime() + ", " + "Placering: " + r.getPlacement());
+                    System.out.println();
                 }
             }
         }
@@ -131,6 +174,20 @@ public class Trainer extends Chairman {
                 }
             }
         }*/
+    }
+
+    public static void main(String[] args) {
+        Trainer trainer1 = new Trainer("Julle");
+        // trainer1.readFromFile();
+        // trainer1.addCompResults(1509);
+        // trainer1.writeToFile();
+        // trainer1.printCompResults(9677);
+        // trainer1.readFromFile();
+        //trainer1.printMembers();
+        //trainer1.printJunior();
+
+
+
     }
 
 

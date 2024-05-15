@@ -2,7 +2,8 @@ import java.util.*;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 
-public class Accountant extends Chairman {
+public class Accountant extends Chairman implements java.io.Serializable{
+    private static final long serialVersionUID = 6529685098267757680L;
 
     /**
      * The name of the accountant
@@ -36,8 +37,14 @@ public class Accountant extends Chairman {
      * Prints the information on a member given member ID
      * @param memberId The member ID given
      */
-    public void printMemberInfo(int memberId){ // prints a unique member.
+    public void printMemberInfo(int memberId) { // prints a unique member.
         super.printMemberInfo(memberId);
+        for (Member m : members) {
+            if (m.getMemberId() == memberId) {
+                m.printMemberInfo();
+                System.out.println(m.getDueDate());
+            }
+        }
     }
 
 
@@ -45,8 +52,8 @@ public class Accountant extends Chairman {
      * Changes the isPaid and dueDate variables of the given member.
      * @param memberId The id of the member
      */
-    public void markAsPaid (int memberId) { //markAsPaid ændrer ikke isPaid for det givne member lige nu?
-        for(int i = 0; i < members.size()-1; i++) {
+    public void markAsPaid (int memberId) {
+        for(int i = 0; i < members.size(); i++) {
 
             if(memberId==members.get(i).getMemberId()) {
                 System.out.println("Medlem: " + members.get(i).getMemberId() + " fundet.");
@@ -57,6 +64,21 @@ public class Accountant extends Chairman {
                 System.out.println("Ændring gemt.");
                 System.out.println("Medlemsskab tilhørende medlem: " + members.get(i).getMemberId() + ", navn: " + members.get(i).getName() + " er markeret betalt.");
                 System.out.println("Næste betalingsdato: " + members.get(i).getDueDate());
+            }
+        }
+    }
+
+    public void markAsUnpaid (int memberId) {
+        for(int i = 0; i < members.size(); i++) {
+
+            if(memberId==members.get(i).getMemberId()) {
+                System.out.println("Medlem: " + members.get(i).getMemberId() + " fundet.");
+                LocalDateTime now = LocalDateTime.now().plusYears(1).plusDays(30);
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
+                members.get(i).setDueDate(now.format(formatter));
+                members.get(i).setIsPaid(false);
+                System.out.println("Ændring gemt.");
+                System.out.println("Medlemsskab tilhørende medlem: " + members.get(i).getMemberId() + ", navn: " + members.get(i).getName() + " er markeret ubetalt.");
             }
         }
     }
@@ -97,8 +119,8 @@ public class Accountant extends Chairman {
     public void displayPaid() {
         System.out.println("Viser betalte medlemsskaber:");
         for(Member m : members) {
-            if(m.getIsPaid()) {
-                System.out.println("Medlem: " + m.getMemberId() + "- Navn: " + m.getName());
+            if(m.getIsPaid()) { //skal være instanceof Competitve swimmer.
+                System.out.println("Medlem: " + m.getMemberId() + " - Navn: " + m.getName());
             }
         }
     }
@@ -111,7 +133,7 @@ public class Accountant extends Chairman {
         System.out.println("Viser ubetalte medlemsskaber:");
         for(Member m : members) {
             if(!m.getIsPaid()) {
-                System.out.println("Medlem: " + m.getMemberId() + "- Navn: " + m.getName());
+                System.out.println("Medlem: " + m.getMemberId() + " - Navn: " + m.getName());
             }
         }
     }
@@ -123,8 +145,16 @@ public class Accountant extends Chairman {
         System.out.println("Viser blokerede medlemsskaber:");
         for(Member m : members) {
             if(m.getIsBlocked()) {
-                System.out.println("Medlem: " + m.getName() + "- Navn: " + m.getName());
+                System.out.println("Medlem: " + m.getMemberId() + " - Navn: " + m.getName());
             }
         }
     }
+
+    public void displayDueDate(){
+        System.out.println("Viser betalingsdatoer.");
+        for (Member m : members){
+            System.out.println("Medlem: " + m.getMemberId() + " - Navn: " + m.getName() + ", har betalingsdato: " + m.getDueDate());
+        }
+    }
+
 }

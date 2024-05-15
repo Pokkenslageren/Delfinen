@@ -3,6 +3,7 @@ import java.time.*;
 import java.time.format.DateTimeFormatter;
 
 public class Member implements java.io.Serializable { // default motionist
+	private static final long serialVersionUID = 6529685098267757680L;
 	/**
 	 * The yearly subscription price for a member.
 	 */
