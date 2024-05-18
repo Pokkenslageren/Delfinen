@@ -4,13 +4,10 @@ import java.io.*;
 
 public class Trainer extends Chairman implements java.io.Serializable {
     private static final long serialVersionUID = 6529685098267757680L; //Giver et konstant ID på tværs af serialization instanser.
-    //private final String name = "Jon"; // skal fjernes
-    //ArrayList<Member> members = readFromFile2();//new ArrayList<>();
     Scanner scanner = new Scanner(System.in);
 
     public Trainer(String name) {
         super(name);
-
     }
 
     public void printJunior() {
@@ -31,52 +28,51 @@ public class Trainer extends Chairman implements java.io.Serializable {
     }
 
     public void addTrainingResults() {
-        System.out.println("Indtast medlemsID");
+        System.out.println("Indtast medlems-ID: ");
         int memberId = scanner.nextInt();
-        System.out.println("Indtast tid");
+        System.out.println("Indtast tid: ");
         double time = scanner.nextDouble();
         String competition = "Træning";
-        System.out.println("Indtast placering");
+        System.out.println("Indtast placering: ");
         int placement = scanner.nextInt();
         boolean isCompetition = false;
-        System.out.println("Indtast disciplin");
+        System.out.println("Indtast disciplin: ");
         String discipline = scanner.next();
         for (int i = 0; i < members.size(); i++) {
             if (memberId == members.get(i).getMemberId() && members.get(i) instanceof CompetitiveSwimmer) {
                 Results r = new Results(time, competition, placement, isCompetition, discipline);
                 ((CompetitiveSwimmer) members.get(i)).addTrainingResult(r);
-                System.out.println("Resultat tilføjet til træningsresultater ");
+                System.out.println("Resultat tilføjet til træningsresultater.");
             }
         }
     }
 
     public void addCompResults(){
-        System.out.println("Indtast medlemsID");
+        System.out.println("Indtast medlems-ID: ");
         int memberId = scanner.nextInt();
-        System.out.println("Tid?");
+        System.out.println("Indtast tid: ");
         double time = scanner.nextDouble();
-        System.out.println("Konkurrence?");
+        System.out.println("Indtast konkurrence: ");
         String competition = scanner.next();
-        System.out.println("Placering?");
+        System.out.println("Indtast placering: ");
         int placement = scanner.nextInt();
         boolean isCompetition = true;
-        System.out.println("Disciplin?");
+        System.out.println("Indtast disciplin: ");
         String discipline = scanner.next();
         for (int i = 0; i < members.size(); i++) {
             if (memberId == members.get(i).getMemberId() && members.get(i) instanceof CompetitiveSwimmer) {
                 Results r = new Results(time, competition, placement, isCompetition, discipline);
                 ((CompetitiveSwimmer) members.get(i)).addCompResult(r);
-                System.out.println("Resultat tilføjet til konkurrenceresultater ");
+                System.out.println("Resultat tilføjet til konkurrenceresultater.");
             }
         }
         //writeToFile();
     }
 
-
-    public void removeResults() {
+    public void removeResults() { // OBS - DENNE METODE ER ANDERLEDES I EN ANDEN BRANCH (UKORREKT HER)
         ArrayList<Results> compResults = new ArrayList<>();
         ArrayList<Results> trainingResults = new ArrayList<>();
-        System.out.println("Tast medlems-ID: ");
+        System.out.println("Indtast medlems-ID: ");
         int memberId = scanner.nextInt();
         for (Member m : members){
             if (memberId == m.getMemberId() && m instanceof CompetitiveSwimmer){
@@ -154,12 +150,12 @@ public class Trainer extends Chairman implements java.io.Serializable {
     }
 */
     public void printCompResults(){
-        System.out.print("Indtast medlemsID");
+        System.out.print("Indtast medlems-ID: ");
         int memberId = scanner.nextInt();
         for (Member m : members){
             if (memberId == m.getMemberId() && m instanceof CompetitiveSwimmer){
                 for (Results r : ((CompetitiveSwimmer) m).getCompResults()){
-                    System.out.println( "ResultatsID: " + r.getResultId() + ", " + "Stævne: " + r.getCompetition() + ", " + "Disciplin: " + r.getDiscipline() +", " + "Tid: " + r.getTime() + ", " + "Placering: " + r.getPlacement());
+                    System.out.println( "Resultats-ID: " + r.getResultId() + ", " + "Stævne: " + r.getCompetition() + ", " + "Disciplin: " + r.getDiscipline() +", " + "Tid: " + r.getTime() + ", " + "Placering: " + r.getPlacement());
                     System.out.println();
                 }
             }
@@ -167,12 +163,12 @@ public class Trainer extends Chairman implements java.io.Serializable {
     }
 
     public void printTrainingResults(){
-        System.out.print("Indtast medlemsID");
+        System.out.print("Indtast medlems-ID: ");
         int memberId = scanner.nextInt();
         for (Member m : members){
             if (memberId == m.getMemberId() && m instanceof CompetitiveSwimmer){
                 for (Results r : ((CompetitiveSwimmer) m).getTrainingResults()){
-                    System.out.println( "ResultatsID: " + r.getResultId() + ", " + "Stævne: " + r.getCompetition() + ", " + "Disciplin: " + r.getDiscipline() +", " + "Tid: " + r.getTime() + ", " + "Placering: " + r.getPlacement());
+                    System.out.println( "Resultats-ID: " + r.getResultId() + ", " + "Stævne: " + r.getCompetition() + ", " + "Disciplin: " + r.getDiscipline() +", " + "Tid: " + r.getTime() + ", " + "Placering: " + r.getPlacement());
                     System.out.println();
                 }
             }
@@ -198,7 +194,6 @@ public class Trainer extends Chairman implements java.io.Serializable {
                 else{
                     System.out.println("Ugyldigt input");
                 }
-
             }
         }
         System.out.print("Vælg disciplin. Tast 1 for freestyle. \nTast 2 for breaststroke. \nTast 3 for butterfly.");
@@ -206,19 +201,19 @@ public class Trainer extends Chairman implements java.io.Serializable {
         switch(input){
             case 1:
                 //sorter mappet ud for value
-                System.out.println("Printer top 5 tider i freestyle og tilhørende medlemsID");
+                System.out.println("Printer top 5 tider i freestyle og tilhørende medlems-ID.");
                 List<Map.Entry<Integer,Double>> list = new ArrayList<>(fristil.entrySet());
                 list.sort(Map.Entry.comparingByValue());
                 list.stream().limit(5).forEach((fri)->System.out.println(fri.getKey() + " = " + fri.getValue()));
                 break;
             case 2:
-                System.out.println("Printer top 5 tider i bryst og tilhørende medlemsID");
+                System.out.println("Printer top 5 tider i bryst og tilhørende medlems-ID.");
                 List<Map.Entry<Integer,Double>> list2 = new ArrayList<>(bryst.entrySet());
                 list2.sort(Map.Entry.comparingByValue());
                 list2.stream().limit(5).forEach((breast)->System.out.println(breast.getKey() + " = " + breast.getValue()));
                 break;
             case 3:
-                System.out.println("Printer top 5 tider i butterfly og tilhørende medlemsID");
+                System.out.println("Printer top 5 tider i butterfly og tilhørende medlems-ID.");
                 List<Map.Entry<Integer,Double>> list3 = new ArrayList<>(butterfly.entrySet());
                 list3.sort(Map.Entry.comparingByValue());
                 list3.stream().limit(5).forEach((butter)->System.out.println(butter.getKey() + " = " + butter.getValue()));
@@ -237,10 +232,5 @@ public class Trainer extends Chairman implements java.io.Serializable {
         //trainer1.printMembers();
         //trainer1.printJunior();
 
-
-
     }
-
-
 }
-

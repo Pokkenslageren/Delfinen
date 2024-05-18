@@ -30,7 +30,6 @@ public class CompetitiveSwimmer extends Member implements java.io.Serializable{
 	 */
 	private boolean isButterfly = true;
 
-
 	Random rdm = new Random();
 
 	/**
@@ -52,7 +51,7 @@ public class CompetitiveSwimmer extends Member implements java.io.Serializable{
 		isBreaststroke = flag2 == 1;
 		isButterfly = flag3 == 1;
 
-		super.memberId = rdm.nextInt(100,10000); // todo tjek om memberId er unikt.
+		super.memberId = rdm.nextInt(100,10000);
 	}
 
 	/**

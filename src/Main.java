@@ -36,10 +36,9 @@ public class Main{
 		}
 	}
 
-	public void loginMenu() { // todo: Lav loginMenu - writeToFile on close.
+	public void loginMenu() {
 		Scanner input = new Scanner(System.in);
 		System.out.println("Velkommen til Club adminstration system for Svømmeklubben Delfinen");
-
 	}
 
 	public void accountant(){
@@ -53,41 +52,41 @@ public class Main{
 					accountant1.printMembers();
 					break;
 				case 2:
-					System.out.println("Indtast medlemsID");
+					System.out.println("Indtast medlems-ID: ");
 					int memberId = sc.nextInt();
 					accountant1.printMemberInfo(memberId);
 					break;
 				case 3:
-					System.out.println("Printer betalte medlemsskaber");
+					System.out.println("Printer betalte medlemsskaber.");
 					accountant1.displayPaid();
 					break;
 				case 4:
-					System.out.println("Printer ubetalte medlemsskaber");
+					System.out.println("Printer ubetalte medlemsskaber.");
 					accountant1.displayUnpaid();
 					break;
 				case 5:
-					System.out.println("Printer blokerede medlemmer");
+					System.out.println("Printer blokerede medlemmer.");
 					accountant1.displayBlocked();
 					break;
 				case 6:
-					System.out.println("Indtast medlemsID:");
+					System.out.println("Indtast medlems-ID: ");
 					int markas = sc.nextInt();
 					accountant1.markAsPaid(markas);
-					System.out.println("Medlem med ID: " + markas + " er markeret som betalt.");
+					System.out.println("Medlem med ID: " + markas + ", er markeret som betalt.");
 					accountant1.writeToFile();
 					break;
 				case 7:
-					System.out.println("Indtast medlemsID:");
+					System.out.println("Indtast medlems-ID: ");
 					int block = sc.nextInt();
 					accountant1.blockMember(block);
 					System.out.println("Medlem med ID: " + block + " er blevet blokeret.");
 					accountant1.writeToFile();
 					break;
 				case 8:
-					System.out.println("Indtast medlemsID:");
+					System.out.println("Indtast medlems-ID: ");
 					int unblock = sc.nextInt();
 					accountant1.unblockMember(unblock);
-					System.out.print("Medlem med ID: " + unblock + " har fået fjernet sin blokering.");
+					System.out.print("Medlem med ID: " + unblock + ", har fået fjernet sin blokering.");
 					accountant1.writeToFile();
 					break;
 				default:
@@ -142,7 +141,7 @@ public class Main{
 		chairman1.readFromFile();
 		int sentinel = 1;
 		while(sentinel != 0){
-			System.out.println("Tast 1 for at printe alle Delfinens medlemmer. Tast 2 for at tilføje medlem. \nTast 3 for at fjerne medlem. Tast 4 for at redigere medlem");
+			System.out.println("Tast 1 for at printe alle Delfinens medlemmer. \nTast 2 for at tilføje medlem. \nTast 3 for at fjerne medlem. \nTast 4 for at redigere medlem");
 			int input = sc.nextInt();
 			switch(input){
 				case 1:
@@ -190,10 +189,6 @@ public class Main{
 					sentinel = 0;
 					break;
 			}
-
 		}
 	}
-
-
 }
-

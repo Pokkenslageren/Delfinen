@@ -47,7 +47,6 @@ public class Accountant extends Chairman implements java.io.Serializable{
         }
     }
 
-
     /**
      * Changes the isPaid and dueDate variables of the given member.
      * @param memberId The id of the member
@@ -56,14 +55,14 @@ public class Accountant extends Chairman implements java.io.Serializable{
         for(int i = 0; i < members.size(); i++) {
 
             if(memberId==members.get(i).getMemberId()) {
-                System.out.println("Medlem: " + members.get(i).getMemberId() + " fundet.");
+                System.out.println("Medlem: " + members.get(i).getMemberId() + ", fundet.");
                 LocalDateTime now = LocalDateTime.now().plusYears(1).plusDays(30);
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
                 members.get(i).setDueDate(now.format(formatter));
                 members.get(i).setIsPaid(true);
                 System.out.println("Ændring gemt.");
                 System.out.println("Medlemsskab tilhørende medlem: " + members.get(i).getMemberId() + ", navn: " + members.get(i).getName() + " er markeret betalt.");
-                System.out.println("Næste betalingsdato: " + members.get(i).getDueDate());
+                System.out.println("Næste betalingsdato: " + members.get(i).getDueDate() + ".");
             }
         }
     }
@@ -72,7 +71,7 @@ public class Accountant extends Chairman implements java.io.Serializable{
         for(int i = 0; i < members.size(); i++) {
 
             if(memberId==members.get(i).getMemberId()) {
-                System.out.println("Medlem: " + members.get(i).getMemberId() + " fundet.");
+                System.out.println("Medlem: " + members.get(i).getMemberId() + ", fundet.");
                 LocalDateTime now = LocalDateTime.now().plusYears(1).plusDays(30);
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
                 members.get(i).setDueDate(now.format(formatter));
@@ -90,7 +89,7 @@ public class Accountant extends Chairman implements java.io.Serializable{
     public void blockMember (int memberId) {
         for(int i = 0; i < members.size(); i++) {
             if(memberId==members.get(i).getMemberId()) {
-                System.out.println("Medlem: " + members.get(i).getMemberId() + " fundet.");
+                System.out.println("Medlem: " + members.get(i).getMemberId() + ", fundet.");
                 members.get(i).setIsBlocked(true);
                 System.out.println("Ændring gemt.");
                 System.out.println("Medlemsskab tilhørende medlem: " + members.get(i).getMemberId() + ", navn: " + members.get(i).getName() + " er blokeret.");
@@ -105,7 +104,7 @@ public class Accountant extends Chairman implements java.io.Serializable{
     public void unblockMember (int memberId) {
         for(int i = 0; i < members.size(); i++) {
             if(memberId==members.get(i).getMemberId()) {
-                System.out.println("Medlem: " + members.get(i).getMemberId() + " fundet.");
+                System.out.println("Medlem: " + members.get(i).getMemberId() + ", fundet.");
                 members.get(i).setIsBlocked(false);
                 System.out.println("Ændring gemt.");
                 System.out.println("Medlemsskab tilhørende medlem: " + members.get(i).getMemberId() +", navn: " + members.get(i).getName() + " er blokeret.");
@@ -120,7 +119,7 @@ public class Accountant extends Chairman implements java.io.Serializable{
         System.out.println("Viser betalte medlemsskaber:");
         for(Member m : members) {
             if(m.getIsPaid()) { //skal være instanceof Competitve swimmer.
-                System.out.println("Medlem: " + m.getMemberId() + " - Navn: " + m.getName());
+                System.out.println("Medlem: " + m.getMemberId() + " - Navn: " + m.getName() + ".");
             }
         }
     }
@@ -133,7 +132,7 @@ public class Accountant extends Chairman implements java.io.Serializable{
         System.out.println("Viser ubetalte medlemsskaber:");
         for(Member m : members) {
             if(!m.getIsPaid()) {
-                System.out.println("Medlem: " + m.getMemberId() + " - Navn: " + m.getName());
+                System.out.println("Medlem: " + m.getMemberId() + " - Navn: " + m.getName() + ".");
             }
         }
     }
@@ -145,7 +144,7 @@ public class Accountant extends Chairman implements java.io.Serializable{
         System.out.println("Viser blokerede medlemsskaber:");
         for(Member m : members) {
             if(m.getIsBlocked()) {
-                System.out.println("Medlem: " + m.getMemberId() + " - Navn: " + m.getName());
+                System.out.println("Medlem: " + m.getMemberId() + " - Navn: " + m.getName() + ".");
             }
         }
     }
@@ -153,8 +152,7 @@ public class Accountant extends Chairman implements java.io.Serializable{
     public void displayDueDate(){
         System.out.println("Viser betalingsdatoer.");
         for (Member m : members){
-            System.out.println("Medlem: " + m.getMemberId() + " - Navn: " + m.getName() + ", har betalingsdato: " + m.getDueDate());
+            System.out.println("Medlem: " + m.getMemberId() + " - Navn: " + m.getName() + ", har betalingsdato: " + m.getDueDate() + ".");
         }
     }
-
 }
