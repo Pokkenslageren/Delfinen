@@ -59,14 +59,14 @@ public class Chairman implements java.io.Serializable {
                     System.out.println("OBS! Medlemsskab blokeret!");
                 }
                 if (m.getIsPaid()){
-                    System.out.println("Medlemsskab: Betalt");
+                    System.out.println("Medlemsskab: Betalt.");
                 } else {
-                    System.out.println("Medlemsskab: Ikke betalt");
+                    System.out.println("Medlemsskab: Ikke betalt.");
                 }
                 if (m.getIsActive()){
-                    System.out.println("Medlemsskab: Aktivt");
+                    System.out.println("Medlemsskab: Aktivt.");
                 } else {
-                    System.out.println("Medlemsskab: Passivt");
+                    System.out.println("Medlemsskab: Passivt.");
                 }
             }
         }
@@ -87,7 +87,7 @@ public class Chairman implements java.io.Serializable {
     public void addMember() {
         Random rdm = new Random();
         System.out.println();
-        System.out.println("Tryk 1 for motionist, tryk 2 for konkurrencesvømmer.");
+        System.out.println("Tryk 1 for motionist. \nTryk 2 for konkurrencesvømmer.");
         int input = scanner.nextInt();
         switch (input) {
 
@@ -127,11 +127,11 @@ public class Chairman implements java.io.Serializable {
                 int compPhoneNr = scanner.nextInt();
                 System.out.println("Indtast addresse: ");
                 String compAddress = scanner.next();
-                System.out.println("Skal medlemmet udøve freestyle? 1: Ja, 2: Nej. ");
+                System.out.println("Skal medlemmet udøve freestyle? 1: Ja, 2: Nej.");
                 int freestyle = scanner.nextInt();
-                System.out.println("Skal medlemmet udøve brystsvømning? 1: Ja, 2: Nej.  ");
+                System.out.println("Skal medlemmet udøve brystsvømning? 1: Ja, 2: Nej.");
                 int breaststroke = scanner.nextInt();
-                System.out.println("Skal medlemmet udøve butterfly? 1: Ja, 2: Nej.  ");
+                System.out.println("Skal medlemmet udøve butterfly? 1: Ja, 2: Nej.");
                 int butterfly = scanner.nextInt();
                 Member c = new CompetitiveSwimmer(compName, compAge, compGender, compPhoneNr, compAddress, freestyle, breaststroke, butterfly);
                 members.add(c);
@@ -141,9 +141,7 @@ public class Chairman implements java.io.Serializable {
                 System.out.println("Ugyldigt input.");
                 break;
         }
-
     }
-
 
     /**
      * Removes a member from the members list, given a member ID
@@ -159,19 +157,18 @@ public class Chairman implements java.io.Serializable {
         }
     }
 
-
     /**
      * Edits information on a member, given member ID
      * Distinguishes between regular member (1) and competitive swimmer (2)
      * @param memberId The member ID of the member you want to edit
      */
     public void editMember(){
-        System.out.println("Indtast medlemsID");
+        System.out.println("Indtast medlems-ID: ");
         int memberId = scanner.nextInt();
         for (int i = 0; i <= members.size()-1; i++){
 
             if (memberId == members.get(i).getMemberId()){
-                System.out.println("Medlem " + members.get(i).getMemberId() + " fundet.");
+                System.out.println("Medlem med ID: " + members.get(i).getMemberId() + ", fundet.");
                 if (!members.get(i).isCompetitive()){
                     int sentinel = 1;
                     while (sentinel == 1){
@@ -193,7 +190,7 @@ public class Chairman implements java.io.Serializable {
                                 System.out.println("Indtast det nye navn: ");
                                 String name = scanner.next();
                                 members.get(i).setName(name);
-                                System.out.println("Ændring gemt: " + members.get(i).getName());
+                                System.out.println("Ændring gemt: " + members.get(i).getName() + ".");
                                 System.out.println();
                                 break;
 
@@ -202,7 +199,7 @@ public class Chairman implements java.io.Serializable {
                                 System.out.println("Indtast den nye alder: ");
                                 int age = scanner.nextInt();
                                 members.get(i).setAge(age);
-                                System.out.println("Ændring gemt: " + members.get(i).getAge());
+                                System.out.println("Ændring gemt: " + members.get(i).getAge() + ".");
                                 System.out.println();
                                 break;
 
@@ -211,7 +208,7 @@ public class Chairman implements java.io.Serializable {
                                 System.out.println("Indtast det nye køn: ");
                                 int gender = scanner.nextInt();
                                 members.get(i).setGender(gender);
-                                System.out.println("Ændring gemt: " + members.get(i).getGender());
+                                System.out.println("Ændring gemt: " + members.get(i).getGender() + ".");
                                 System.out.println();
                                 break;
 
@@ -220,7 +217,7 @@ public class Chairman implements java.io.Serializable {
                                 System.out.println("Indtast det nye telefonnummer: ");
                                 int phoneNr = scanner.nextInt();
                                 members.get(i).setPhoneNr(phoneNr);
-                                System.out.println("Ændring gemt: " + members.get(i).getPhoneNr());
+                                System.out.println("Ændring gemt: " + members.get(i).getPhoneNr() + ".");
                                 System.out.println();
                                 break;
 
@@ -229,7 +226,7 @@ public class Chairman implements java.io.Serializable {
                                 System.out.println("Indtast den nye adresse: ");
                                 String address = scanner.next();
                                 members.get(i).setAddress(address);
-                                System.out.println("Ændring gemt: " + members.get(i).getAddress());
+                                System.out.println("Ændring gemt: " + members.get(i).getAddress() + ".");
                                 System.out.println();
                                 break;
 
@@ -238,7 +235,7 @@ public class Chairman implements java.io.Serializable {
                                 System.out.println("Indtast det nye valg: " );
                                 boolean isActive = scanner.nextBoolean();
                                 members.get(i).setIsActive(isActive);
-                                System.out.println("Ændring gemt: " + members.get(i).getIsActive());
+                                System.out.println("Ændring gemt: " + members.get(i).getIsActive() + ".");
                                 System.out.println();
                                 break;
 
@@ -272,7 +269,7 @@ public class Chairman implements java.io.Serializable {
                                 System.out.println("Indtast det nye navn: ");
                                 String name = scanner.next();
                                 members.get(i).setName(name);
-                                System.out.println("Ændring gemt: " + members.get(i).getName());
+                                System.out.println("Ændring gemt: " + members.get(i).getName() + ".");
                                 System.out.println();
                                 break;
 
@@ -281,7 +278,7 @@ public class Chairman implements java.io.Serializable {
                                 System.out.println("Indtast den nye alder: ");
                                 int age = scanner.nextInt();
                                 members.get(i).setAge(age);
-                                System.out.println("Ændring gemt: " + members.get(i).getAge());
+                                System.out.println("Ændring gemt: " + members.get(i).getAge() + ".");
                                 System.out.println();
                                 break;
 
@@ -290,7 +287,7 @@ public class Chairman implements java.io.Serializable {
                                 System.out.println("Indtast det nye køn: ");
                                 int gender = scanner.nextInt();
                                 members.get(i).setGender(gender);
-                                System.out.println("Ændring gemt: " + members.get(i).getGender());
+                                System.out.println("Ændring gemt: " + members.get(i).getGender() + ".");
                                 System.out.println();
                                 break;
 
@@ -299,7 +296,7 @@ public class Chairman implements java.io.Serializable {
                                 System.out.println("Indtast det nye telefonnummer: ");
                                 int phoneNr = scanner.nextInt();
                                 members.get(i).setPhoneNr(phoneNr);
-                                System.out.println("Ændring gemt: " + members.get(i).getPhoneNr());
+                                System.out.println("Ændring gemt: " + members.get(i).getPhoneNr() + ".");
                                 System.out.println();
                                 break;
 
@@ -308,7 +305,7 @@ public class Chairman implements java.io.Serializable {
                                 System.out.println("Indtast den nye adresse: ");
                                 String address = scanner.next();
                                 members.get(i).setAddress(address);
-                                System.out.println("Ændring gemt: " + members.get(i).getAddress());
+                                System.out.println("Ændring gemt: " + members.get(i).getAddress() + ".");
                                 System.out.println();
                                 break;
 
@@ -317,7 +314,7 @@ public class Chairman implements java.io.Serializable {
                                 System.out.println("Indtast det nye valg: " );
                                 boolean isActive = scanner.nextBoolean();
                                 members.get(i).setIsActive(isActive);
-                                System.out.println("Ændring gemt: " + members.get(i).getIsActive());
+                                System.out.println("Ændring gemt: " + members.get(i).getIsActive() + ".");
                                 System.out.println();
                                 break;
 
@@ -327,7 +324,7 @@ public class Chairman implements java.io.Serializable {
                                     System.out.println("Indtast det nye valg: ");
                                     boolean freestyle = scanner.nextBoolean(); // OBS DATATYPE
                                     ((CompetitiveSwimmer) members.get(i)).setIsFreestyle(freestyle);
-                                    System.out.println("Ændring gemt: " + ((CompetitiveSwimmer) members.get(i)).getIsFreestyle());
+                                    System.out.println("Ændring gemt: " + ((CompetitiveSwimmer) members.get(i)).getIsFreestyle() + ".");
                                     System.out.println();
                                 }
                                 break;
@@ -338,7 +335,7 @@ public class Chairman implements java.io.Serializable {
                                     System.out.println("Indtast det nye valg: ");
                                     boolean breaststroke = scanner.nextBoolean(); // OBS DATATYPE
                                     ((CompetitiveSwimmer) members.get(i)).setIsBreaststroke(breaststroke);
-                                    System.out.println("Ændring gemt: " + ((CompetitiveSwimmer) members.get(i)).getIsBreaststroke());
+                                    System.out.println("Ændring gemt: " + ((CompetitiveSwimmer) members.get(i)).getIsBreaststroke() + ".");
                                     System.out.println();
                                 }
                                 break;
@@ -349,7 +346,7 @@ public class Chairman implements java.io.Serializable {
                                     System.out.println("Indtast det nye valg: ");
                                     boolean butterfly = scanner.nextBoolean(); // OBS DATATYPE
                                     ((CompetitiveSwimmer) members.get(i)).setIsButterfly(butterfly);
-                                    System.out.println("Ændring gemt: " + ((CompetitiveSwimmer) members.get(i)).getIsButterfly());
+                                    System.out.println("Ændring gemt: " + ((CompetitiveSwimmer) members.get(i)).getIsButterfly() + ".");
                                 }
                                 break;
 
@@ -375,7 +372,7 @@ public class Chairman implements java.io.Serializable {
 
             oos.writeObject(members);
 
-            System.out.println("Data gemt i Members");
+            System.out.println("Data gemt i Members.");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -406,23 +403,13 @@ public class Chairman implements java.io.Serializable {
              ObjectInputStream ois = new ObjectInputStream(fis);) {
 
             members = (ArrayList<Member>) ois.readObject();
-
-
         }
-
         catch(IOException e){
             e.printStackTrace();
-        }catch (ClassNotFoundException c){
+        }
+        catch (ClassNotFoundException c){
             c.printStackTrace();
         }
         return members;
-    }
-
-    public static void main(String[] args){
-        Chairman chairman = new Chairman("Julius");
-        //chairman.readFromFile();
-        //chairman.printMembers();
-        // chairman.addMember();
-        // chairman.writeToFile();
     }
 }
