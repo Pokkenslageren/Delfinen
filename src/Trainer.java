@@ -47,7 +47,7 @@ public class Trainer extends Chairman implements java.io.Serializable {
         }
     }
 
-    public void addCompResults(){
+    public void addCompResults() {
         System.out.println("Indtast medlems-ID: ");
         int memberId = scanner.nextInt();
         System.out.println("Indtast tid: ");
@@ -74,20 +74,20 @@ public class Trainer extends Chairman implements java.io.Serializable {
         ArrayList<Results> trainingResults = new ArrayList<>();
         System.out.println("Indtast medlems-ID: ");
         int memberId = scanner.nextInt();
-        for (Member m : members){
-            if (memberId == m.getMemberId() && m instanceof CompetitiveSwimmer){
+        for (Member m : members) {
+            if (memberId == m.getMemberId() && m instanceof CompetitiveSwimmer) {
                 compResults = ((CompetitiveSwimmer) m).getCompResults();
                 trainingResults = ((CompetitiveSwimmer) m).getTrainingResults();
             }
         }
         System.out.println("Tast 1 for...");
         int choice = scanner.nextInt();
-        switch (choice){
+        switch (choice) {
 
             case 1:
                 int resultId = scanner.nextInt();
-                for (int i = 0; i <= compResults.size(); i++){
-                    if (resultId == compResults.get(i).getResultId()){
+                for (int i = 0; i <= compResults.size(); i++) {
+                    if (resultId == compResults.get(i).getResultId()) {
                         compResults.remove(compResults.get(i));
                     }
                 }
@@ -149,88 +149,75 @@ public class Trainer extends Chairman implements java.io.Serializable {
         scanner.close();
     }
 */
-    public void printCompResults(){
+    public void printCompResults() {
         System.out.print("Indtast medlems-ID: ");
         int memberId = scanner.nextInt();
-        for (Member m : members){
-            if (memberId == m.getMemberId() && m instanceof CompetitiveSwimmer){
-                for (Results r : ((CompetitiveSwimmer) m).getCompResults()){
-                    System.out.println( "Resultats-ID: " + r.getResultId() + ", " + "Stævne: " + r.getCompetition() + ", " + "Disciplin: " + r.getDiscipline() +", " + "Tid: " + r.getTime() + ", " + "Placering: " + r.getPlacement());
+        for (Member m : members) {
+            if (memberId == m.getMemberId() && m instanceof CompetitiveSwimmer) {
+                for (Results r : ((CompetitiveSwimmer) m).getCompResults()) {
+                    System.out.println("Resultats-ID: " + r.getResultId() + ", " + "Stævne: " + r.getCompetition() + ", " + "Disciplin: " + r.getDiscipline() + ", " + "Tid: " + r.getTime() + ", " + "Placering: " + r.getPlacement());
                     System.out.println();
                 }
             }
         }
     }
 
-    public void printTrainingResults(){
+    public void printTrainingResults() {
         System.out.print("Indtast medlems-ID: ");
         int memberId = scanner.nextInt();
-        for (Member m : members){
-            if (memberId == m.getMemberId() && m instanceof CompetitiveSwimmer){
-                for (Results r : ((CompetitiveSwimmer) m).getTrainingResults()){
-                    System.out.println( "Resultats-ID: " + r.getResultId() + ", " + "Stævne: " + r.getCompetition() + ", " + "Disciplin: " + r.getDiscipline() +", " + "Tid: " + r.getTime() + ", " + "Placering: " + r.getPlacement());
+        for (Member m : members) {
+            if (memberId == m.getMemberId() && m instanceof CompetitiveSwimmer) {
+                for (Results r : ((CompetitiveSwimmer) m).getTrainingResults()) {
+                    System.out.println("Resultats-ID: " + r.getResultId() + ", " + "Stævne: " + r.getCompetition() + ", " + "Disciplin: " + r.getDiscipline() + ", " + "Tid: " + r.getTime() + ", " + "Placering: " + r.getPlacement());
                     System.out.println();
                 }
             }
         }
     }
 
-    public void printTopFive(){
+    public void printTopFive() {
         HashMap<Integer, Double> fristil = new HashMap<>();
         HashMap<Integer, Double> bryst = new HashMap<>();
         HashMap<Integer, Double> butterfly = new HashMap<>();
 
-        for (Member m : members){
-            for (Results r : ((CompetitiveSwimmer) m).getCompResults()){
-                if(r.getDiscipline().equals("freestyle")){
-                    fristil.put(m.getMemberId(),r.getTime());
-                }
-                else if(r.getDiscipline().equals("breaststroke")){
-                    bryst.put(m.getMemberId(),r.getTime());
-                }
-                else if(r.getDiscipline().equals("butterfly")){
-                    butterfly.put(m.getMemberId(),r.getTime());
-                }
-                else{
+        for (Member m : members) {
+            for (Results r : ((CompetitiveSwimmer) m).getCompResults()) {
+                if (r.getDiscipline().equals("freestyle")) {
+                    fristil.put(m.getMemberId(), r.getTime());
+                } else if (r.getDiscipline().equals("breaststroke")) {
+                    bryst.put(m.getMemberId(), r.getTime());
+                } else if (r.getDiscipline().equals("butterfly")) {
+                    butterfly.put(m.getMemberId(), r.getTime());
+                } else {
                     System.out.println("Ugyldigt input");
                 }
             }
         }
         System.out.print("Vælg disciplin. Tast 1 for freestyle. \nTast 2 for breaststroke. \nTast 3 for butterfly.");
         int input = scanner.nextInt();
-        switch(input){
+        switch (input) {
             case 1:
                 //sorter mappet ud for value
                 System.out.println("Printer top 5 tider i freestyle og tilhørende medlems-ID.");
-                List<Map.Entry<Integer,Double>> list = new ArrayList<>(fristil.entrySet());
+                List<Map.Entry<Integer, Double>> list = new ArrayList<>(fristil.entrySet());
                 list.sort(Map.Entry.comparingByValue());
-                list.stream().limit(5).forEach((fri)->System.out.println(fri.getKey() + " = " + fri.getValue()));
+                list.stream().limit(5).forEach((fri) -> System.out.println(fri.getKey() + " = " + fri.getValue()));
                 break;
             case 2:
                 System.out.println("Printer top 5 tider i bryst og tilhørende medlems-ID.");
-                List<Map.Entry<Integer,Double>> list2 = new ArrayList<>(bryst.entrySet());
+                List<Map.Entry<Integer, Double>> list2 = new ArrayList<>(bryst.entrySet());
                 list2.sort(Map.Entry.comparingByValue());
-                list2.stream().limit(5).forEach((breast)->System.out.println(breast.getKey() + " = " + breast.getValue()));
+                list2.stream().limit(5).forEach((breast) -> System.out.println(breast.getKey() + " = " + breast.getValue()));
                 break;
             case 3:
                 System.out.println("Printer top 5 tider i butterfly og tilhørende medlems-ID.");
-                List<Map.Entry<Integer,Double>> list3 = new ArrayList<>(butterfly.entrySet());
+                List<Map.Entry<Integer, Double>> list3 = new ArrayList<>(butterfly.entrySet());
                 list3.sort(Map.Entry.comparingByValue());
-                list3.stream().limit(5).forEach((butter)->System.out.println(butter.getKey() + " = " + butter.getValue()));
+                list3.stream().limit(5).forEach((butter) -> System.out.println(butter.getKey() + " = " + butter.getValue()));
                 break;
             default:
                 System.out.println("Ugyldigt input. Returnerer til menu");
                 break;
-
-    public static void main(String[] args) {
-        Trainer trainer1 = new Trainer("Julle");
-        // trainer1.readFromFile();
-        // trainer1.addCompResults(1509);
-        // trainer1.writeToFile();
-        // trainer1.printCompResults(9677);
-        // trainer1.readFromFile();
-        //trainer1.printMembers();
-        //trainer1.printJunior();
-
+        }
     }
 }

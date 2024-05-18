@@ -412,12 +412,4 @@ public class Chairman implements java.io.Serializable {
         }
         return members;
     }
-
-    public static void main(String[] args){
-        Chairman chairman = new Chairman("Julius");
-        //chairman.readFromFile();
-        //chairman.printMembers();
-        // chairman.addMember();
-        // chairman.writeToFile();
-    }
 }
