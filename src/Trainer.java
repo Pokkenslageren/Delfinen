@@ -70,32 +70,62 @@ public class Trainer extends Chairman implements java.io.Serializable {
     }
 
     public void removeResults() { // OBS - DENNE METODE ER ANDERLEDES I EN ANDEN BRANCH (UKORREKT HER)
-        ArrayList<Results> compResults = new ArrayList<>();
-        ArrayList<Results> trainingResults = new ArrayList<>();
         System.out.println("Indtast medlems-ID: ");
         int memberId = scanner.nextInt();
-        for (Member m : members) {
-            if (memberId == m.getMemberId() && m instanceof CompetitiveSwimmer) {
-                compResults = ((CompetitiveSwimmer) m).getCompResults();
-                trainingResults = ((CompetitiveSwimmer) m).getTrainingResults();
-            }
-        }
-        System.out.println("Tast 1 for...");
-        int choice = scanner.nextInt();
-        switch (choice) {
 
-            case 1:
-                int resultId = scanner.nextInt();
-                for (int i = 0; i <= compResults.size(); i++) {
-                    if (resultId == compResults.get(i).getResultId()) {
-                        compResults.remove(compResults.get(i));
-                    }
+        for(int i = 0; i < members.size(); i++) {
+            if (memberId == members.get(i).getMemberId() && members.get(i) instanceof CompetitiveSwimmer) {
+                CompetitiveSwimmer swimmer = (CompetitiveSwimmer) members.get(i);
+                System.out.println("Tast 1 for at fjerne et konkurrenceresultat. \nTast 2 for at fjerne et træningsresultat.");
+                int choice = scanner.nextInt();
+
+                switch (choice) {
+                    case 1:
+                        printCompResults();
+                        System.out.println("Indtast resultat-id");
+                        int compResultId = scanner.nextInt();
+                        List<Results> compResults = swimmer.getCompResults();
+                        boolean compResultFound = false;
+
+                        for(int k = 0; k < compResults.size(); k++) {
+                            if(compResultId == compResults.get(k).getResultId()) {
+                                compResults.remove(k);
+                                System.out.println("Resultat med resultat-id: " + compResultId + " er nu fjernet.");
+                                compResultFound = true;
+                                break;
+                            }
+                        }
+
+                        if(!compResultFound) {
+                            System.out.println("Resultat kunne ikke findes. ");
+                        }
+                        break;
+
+                    case 2:
+                        printTrainingResults();
+                        System.out.println("Indtast resultat-id");
+                        int trainResultId = scanner.nextInt();
+                        List<Results> trainingResults = swimmer.getTrainingResults();
+                        boolean trainResultFound = false;
+
+                        for(int k = 0; k < trainingResults.size(); k++) {
+                            if(trainResultId == trainingResults.get(k).getResultId()) {
+                                trainingResults.remove(k);
+                                System.out.println("Resultat med resultat-id: " + trainResultId + " er nu fjernet.");
+                                trainResultFound = true;
+                                break;
+                            }
+                        }
+
+                        if(!trainResultFound) {
+                            System.out.println("Resultat kunne ikke findes. ");
+                        }
+                        break;
+
+
+
                 }
-                break;
-
-            default:
-                System.out.println("Ugyldigt input.");
-                break;
+            }
         }
     }
 
