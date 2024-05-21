@@ -69,7 +69,7 @@ public class Trainer extends Chairman implements java.io.Serializable {
         //writeToFile();
     }
 
-    public void removeResults() { // OBS - DENNE METODE ER ANDERLEDES I EN ANDEN BRANCH (UKORREKT HER)
+    public void removeResults() {
         System.out.println("Indtast medlems-ID: ");
         int memberId = scanner.nextInt();
 
