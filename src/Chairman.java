@@ -43,15 +43,11 @@ public class Chairman implements java.io.Serializable {
         return members;
     }
 
-    public void retrieveContentOfFile (String fileName){  // todo: Deserialization of files
-
-    }
-
     /**
      * Prints all member information, based on the given ID
-     * @param memberId The member ID given
      */
     public void printMemberInfo(int memberId){ // prints a unique member.
+        //int memberId = scanner.nextInt();
         for(Member m : members){
             if (m.getMemberId() == memberId){
                 m.printMemberInfo();
@@ -81,6 +77,13 @@ public class Chairman implements java.io.Serializable {
         }
     }
 
+    public void typeSafety1(){
+        while(!scanner.hasNextInt()){
+            scanner.nextLine();
+            System.out.println("Ugyldigt input. Indtast heltal.");
+        }
+    }
+
     /**
      * Adds a new member to the members list
      */
@@ -88,6 +91,7 @@ public class Chairman implements java.io.Serializable {
         Random rdm = new Random();
         System.out.println();
         System.out.println("Tryk 1 for motionist. \nTryk 2 for konkurrencesvømmer.");
+        typeSafety1();
         int input = scanner.nextInt();
         switch (input) {
 
@@ -258,7 +262,7 @@ public class Chairman implements java.io.Serializable {
                         System.out.println("8: Brystsvømning aktivitet.");
                         System.out.println("9: Butterfly aktivitet.");
                         System.out.println("0: Afslut");
-
+                        typeSafety1();
                         int input = scanner.nextInt();
                         switch (input){
 

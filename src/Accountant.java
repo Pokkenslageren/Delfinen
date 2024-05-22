@@ -35,9 +35,9 @@ public class Accountant extends Chairman implements java.io.Serializable{
 
     /**
      * Prints the information on a member given member ID
-     * @param memberId The member ID given
      */
     public void printMemberInfo(int memberId) { // prints a unique member.
+        //int memberId = scanner.nextInt();
         super.printMemberInfo(memberId);
         for (Member m : members) {
             if (m.getMemberId() == memberId) {

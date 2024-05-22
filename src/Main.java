@@ -158,6 +158,10 @@ import java.util.Scanner;
 					case 4:
 						chairman1.editMember();
 						chairman1.writeToFile();
+					case 5:
+						int memberId = sc.nextInt();
+						chairman1.printMemberInfo(memberId);
+						break;
 					default:
 						sentinel = 0;
 						break;
@@ -166,7 +170,6 @@ import java.util.Scanner;
 		}
 
 		public void testing(){
-
 			int sentinel = 1;
 			while(sentinel != 0){
 				System.out.println("Vælg din rolle. 1: Chairman. 2: Træner. 3: Accountant.");
