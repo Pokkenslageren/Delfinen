@@ -3,6 +3,7 @@ import java.time.*;
 import java.time.format.DateTimeFormatter;
 
 public class Member implements java.io.Serializable { // default motionist
+	private static final long serialVersionUID = 6529685098267757680L;
 	/**
 	 * The yearly subscription price for a member.
 	 */
@@ -13,7 +14,6 @@ public class Member implements java.io.Serializable { // default motionist
 	 */
 	protected int memberId;
 
-
 	/**
 	 * The date at which a member object is created.
 	 */
@@ -22,7 +22,6 @@ public class Member implements java.io.Serializable { // default motionist
 	/**
 	 * The date at which the annual subscription payment is due.
 	 */
-
 	private String dueDate;
 
 	/**
@@ -65,6 +64,8 @@ public class Member implements java.io.Serializable { // default motionist
 	 */
 	private boolean isBlocked;
 
+	private boolean isUnique = false;
+
 	Random rdm = new Random();
 
 	/**
@@ -98,7 +99,7 @@ public class Member implements java.io.Serializable { // default motionist
 		this.phoneNr = phoneNr;
 		this.address = address;
 
-		memberId = rdm.nextInt(100,10000); // todo Tjek om memberId er unikt.
+		memberId = rdm.nextInt(1000,10000);
 	}
 
 	/**
@@ -125,6 +126,9 @@ public class Member implements java.io.Serializable { // default motionist
 		return memberId;
 	}
 
+	public void setMemberId(int memberId){
+		this.memberId = memberId;
+	}
 	/**
 	 * Getter for dateCreated
 	 * @return The date where the member is instantiated
@@ -277,24 +281,20 @@ public class Member implements java.io.Serializable { // default motionist
 		this.isBlocked = isBlocked;
 	}
 
+	public void setIsUnique(boolean isUnique) {
+		this.isUnique = isUnique;
+	}
 
+	public boolean getIsUnique(){
+		return isUnique;
+	}
 	/**
 	 * Prints all available info on the member.
 	 */
 
-	public boolean isCompetitive(){
-		return false;
-	}
-
-	public boolean isUniqueId(int memberId) {
-		return true;
-		// todo: Lav metode der tjekker om member id er unikt ved oprettelse af nye members. evt. do//while i constructor?
-	}
-
-
 	public void printMemberInfo(){
 		System.out.println();
-		System.out.println("Member ID: " + memberId);
+		System.out.println("Member-ID: " + memberId);
 		System.out.println("Navn: " + name);
 		System.out.println("Alder: " + age);
 		if (gender == 1){
@@ -310,7 +310,6 @@ public class Member implements java.io.Serializable { // default motionist
 		System.out.println("Adresse: " + address);
 	}
 
-
 	/**
 	 * Flag to show whether member is a competitive swimmer or regular member
 	 * @return Member is regular
@@ -318,5 +317,4 @@ public class Member implements java.io.Serializable { // default motionist
 	public boolean isCompetitive(){
 		return false;
 	}
-
 }
