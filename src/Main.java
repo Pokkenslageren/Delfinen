@@ -104,7 +104,7 @@ import java.util.Scanner;
 			trainer1.readFromFile();
 			int sentinel = 1;
 			while(sentinel != 0){
-				System.out.print("Tast 1 for at printe alle Delfinens medlemmer. \nTast 2 for at printe alle juniorsvømmere. \nTast 3 for at printe alle seniorsvømmere. \nTast 4 for at tilføje træningsresultat. \nTast 5 for at tilføje konkurrenceresultat. \nTast 6 for at printe træningsresultater. \nTast 7 for at printe konkurrenceresultater. \nTast 8 for at fjerne resultat. \nTast 0 for at returnere til hovedmenu.\n");
+				System.out.print("Tast 1 for at printe alle Delfinens medlemmer. \nTast 2 for at printe alle juniorsvømmere. \nTast 3 for at printe alle seniorsvømmere. \nTast 4 for at tilføje træningsresultat. \nTast 5 for at tilføje konkurrenceresultat. \nTast 6 for at printe træningsresultater. \nTast 7 for at printe konkurrenceresultater. \nTast 8 for at fjerne resultat. \nTast 9 for at printe top 5 for en given disciplin. \nTast 0 for at returnere til hovedmenu.\n");
 				int input = sc.nextInt();
 				switch(input){
 					case 1:
@@ -133,6 +133,9 @@ import java.util.Scanner;
 					case 8:
 						trainer1.removeResults();
 						trainer1.writeToFile();
+						break;
+					case 9:
+						trainer1.printTopFive();
 						break;
 					default:
 						sentinel = 0;
