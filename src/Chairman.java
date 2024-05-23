@@ -403,7 +403,6 @@ public class Chairman implements java.io.Serializable {
                                     System.out.println("Ændring gemt: " + ((CompetitiveSwimmer) members.get(i)).getIsButterfly() + ".");
                                 }
                                 break;
-
                             default:
                                 sentinel = 0;
                                 break;
@@ -421,31 +420,25 @@ public class Chairman implements java.io.Serializable {
     }
 
     /**
-     * Serializes all objects in the members list to file "Members"
+     * Serializes all objects in the members ArrayList to file "Members"
      */
     public void writeToFile(){
         try (FileOutputStream fos = new FileOutputStream("Members");
              ObjectOutputStream oos = new ObjectOutputStream(fos)) {
-
             oos.writeObject(members);
-
-            //System.out.println("Data gemt i Members.");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     /**
-     * Deserializes all members objects from the "Members" file and puts the objects in list members
+     * Deserializes all members objects from the "Members" file and puts the objects in ArrayList members
      */
     @SuppressWarnings("unchecked")
     public void readFromFile(){
         try (FileInputStream fis = new FileInputStream("Members");
              ObjectInputStream ois = new ObjectInputStream(fis);) {
-
-            members = (ArrayList<Member>) ois.readObject();
-
-
+                members = (ArrayList<Member>) ois.readObject();
         }
 
         catch(IOException e){
@@ -453,20 +446,5 @@ public class Chairman implements java.io.Serializable {
         }catch (ClassNotFoundException c){
             c.printStackTrace();
         }
-    }
-    @SuppressWarnings("unchecked")
-    public ArrayList<Member> readFromFile2(){
-        try (FileInputStream fis = new FileInputStream("Members");
-             ObjectInputStream ois = new ObjectInputStream(fis);) {
-
-            members = (ArrayList<Member>) ois.readObject();
-        }
-        catch(IOException e){
-            e.printStackTrace();
-        }
-        catch (ClassNotFoundException c){
-            c.printStackTrace();
-        }
-        return members;
     }
 }
