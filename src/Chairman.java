@@ -84,10 +84,40 @@ public class Chairman implements java.io.Serializable {
         }
     }
 
+    public int giveAge(){
+        System.out.println("Indtast alder: ");
+        int age = scanner.nextInt();
+        while(String.valueOf(age).length() > 2 || age == 0){
+            System.out.println("Ugyldig alder. Alder skal være mellem 1 og 99 år");
+            age = scanner.nextInt();
+        }
+        return age;
+    }
+
+    public int givePhoneNumber(){
+        System.out.println("Indtast telefonnummer: ");
+        int phoneNumber = scanner.nextInt();
+        while(String.valueOf(phoneNumber).length() != 8){
+            System.out.println("Telefonnummeret er ikke af længde 8");
+            phoneNumber = scanner.nextInt();
+        }
+        return phoneNumber;
+    }
+
+    public int giveGender(){
+        System.out.println("Indtast køn: 1: for mand, 2: for kvinde, 3: for andet.");
+        int gender = scanner.nextInt();
+        while(gender != 1 && gender != 2 && gender != 3){
+            System.out.println("Ugyldigt input");
+            gender = scanner.nextInt();
+        }
+        return gender;
+    }
+
     public String giveName(){
-        System.out.println("Indtast fornavn:");
+        System.out.println("Indtast fornavn: ");
         String firstName = scanner.next();
-        System.out.println("Indtast efternavn");
+        System.out.println("Indtast efternavn: ");
         String lastName = scanner.next();
         return firstName + " " + lastName;
     }
@@ -98,6 +128,15 @@ public class Chairman implements java.io.Serializable {
         System.out.println("Indtast bolignummer: ");
         String husnummer = scanner.next();
         return (vejnavn + " " + husnummer);
+    }
+
+    public int giveDiscipline(){
+        int discipline = scanner.nextInt();
+        while(discipline <= 0 || discipline > 2) {
+            System.out.println("Ugyldigt input.");
+            discipline = scanner.nextInt();
+        }
+        return discipline;
     }
     /**
      * Adds a new member to the members list
@@ -110,37 +149,27 @@ public class Chairman implements java.io.Serializable {
         int input = scanner.nextInt();
         switch (input) {
             case 1:
-                //System.out.println("Indtast navn: ");
                 String name = giveName();
-                System.out.println("Indtast alder: ");
-                int age = scanner.nextInt();
-                System.out.println("Indtast køn: 1: for mand, 2: for kvinde, 3: for andet.");
-                int gender = scanner.nextInt();
-                System.out.println("Indtast telefonnummer: ");
-                int phoneNr = scanner.nextInt();
-                //System.out.println("Indtast addresse: ");
+                int age = giveAge();
+                int gender = giveGender();
+                int phoneNr = givePhoneNumber();
                 String address = giveAddress();
                 Member m = new Member(name, age, gender, phoneNr, address);
                 m.setMemberId(rdm.nextInt(1000, 10000));
                 members.add(m);
                 break;
             case 2:
-                //System.out.println("Indtast navn: ");
                 String compName = giveName();
-                System.out.println("Indtast alder: ");
-                int compAge = scanner.nextInt();
-                System.out.println("Indtast køn: 1: for mand, 2: for kvinde, 3: for andet.");
-                int compGender = scanner.nextInt();
-                System.out.println("Indtast telefonnummer: ");
-                int compPhoneNr = scanner.nextInt();
-                //System.out.println("Indtast addresse: ");
+                int compAge = giveAge();
+                int compGender = giveGender();
+                int compPhoneNr = givePhoneNumber();
                 String compAddress = giveAddress();
                 System.out.println("Skal medlemmet udøve freestyle? 1: Ja, 2: Nej.");
-                int freestyle = scanner.nextInt();
+                int freestyle = giveDiscipline();
                 System.out.println("Skal medlemmet udøve brystsvømning? 1: Ja, 2: Nej.");
-                int breaststroke = scanner.nextInt();
+                int breaststroke = giveDiscipline();
                 System.out.println("Skal medlemmet udøve butterfly? 1: Ja, 2: Nej.");
-                int butterfly = scanner.nextInt();
+                int butterfly = giveDiscipline();
                 Member c = new CompetitiveSwimmer(compName, compAge, compGender, compPhoneNr, compAddress, freestyle, breaststroke, butterfly);
                 members.add(c);
                 break;
@@ -193,7 +222,7 @@ public class Chairman implements java.io.Serializable {
 
                             case 1:
                                 System.out.println("Nuværende navn: " + members.get(i).getName());
-                                System.out.println("Indtast det nye navn: ");
+                                //System.out.println("Indtast det nye navn: ");
                                 String name = scanner.next();
                                 members.get(i).setName(name);
                                 System.out.println("Ændring gemt: " + members.get(i).getName() + ".");
