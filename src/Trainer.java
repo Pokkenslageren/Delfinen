@@ -40,9 +40,24 @@ public class Trainer extends Chairman implements java.io.Serializable {
         String discipline = scanner.next();
         for (int i = 0; i < members.size(); i++) {
             if (memberId == members.get(i).getMemberId() && members.get(i) instanceof CompetitiveSwimmer) {
-                Results r = new Results(time, competition, placement, isCompetition, discipline);
-                ((CompetitiveSwimmer) members.get(i)).addTrainingResult(r);
-                System.out.println("Resultat tilføjet til træningsresultater.");
+                if((discipline.equals("Freestyle") || discipline.equals("freestyle")) && ((CompetitiveSwimmer) members.get(i)).getIsFreestyle()){
+                    Results r = new Results(time, competition, placement, isCompetition, discipline);
+                    ((CompetitiveSwimmer) members.get(i)).addTrainingResult(r);
+                    System.out.println("Freestyle resultat tilføjet til træningsresultater.");
+                }
+                else if((discipline.equals("bryst") || discipline.equals("Bryst")) && ((CompetitiveSwimmer) members.get(i)).getIsBreaststroke()){
+                    Results r = new Results(time, competition, placement, isCompetition, discipline);
+                    ((CompetitiveSwimmer) members.get(i)).addTrainingResult(r);
+                    System.out.println("Brystsvømningsresultat tilføjet til træningsresultater.");
+                }
+                else if((discipline.equals("Butterfly") || discipline.equals("butterfly")) && ((CompetitiveSwimmer) members.get(i)).getIsButterfly()){
+                    Results r = new Results(time, competition, placement, isCompetition, discipline);
+                    ((CompetitiveSwimmer) members.get(i)).addTrainingResult(r);
+                    System.out.println("Butterfly Resultat tilføjet til træningsresultater.");
+                }
+                else{
+                    System.out.println("Ugyldig disciplin.");
+                }
             }
         }
     }
@@ -61,12 +76,28 @@ public class Trainer extends Chairman implements java.io.Serializable {
         String discipline = scanner.next();
         for (int i = 0; i < members.size(); i++) {
             if (memberId == members.get(i).getMemberId() && members.get(i) instanceof CompetitiveSwimmer) {
-                Results r = new Results(time, competition, placement, isCompetition, discipline);
-                ((CompetitiveSwimmer) members.get(i)).addCompResult(r);
-                System.out.println("Resultat tilføjet til konkurrenceresultater.");
+                if((discipline.equals("Freestyle") || discipline.equals("freestyle")) && ((CompetitiveSwimmer) members.get(i)).getIsFreestyle()){
+                    Results r = new Results(time, competition, placement, isCompetition, discipline);
+                    ((CompetitiveSwimmer) members.get(i)).addTrainingResult(r);
+                    System.out.println("Freestyle resultat tilføjet til konkurrenceresultater.");
+                }
+                else if((discipline.equals("Bryst") || discipline.equals("bryst")) && ((CompetitiveSwimmer) members.get(i)).getIsBreaststroke()){
+                    Results r = new Results(time, competition, placement, isCompetition, discipline);
+                    ((CompetitiveSwimmer) members.get(i)).addCompResult(r);
+                    System.out.println("Brystsvømningsresultat tilføjet til konkurrenceresultater.");
+                }
+                else if((discipline.equals("Butterfly") || discipline.equals("butterfly")) && ((CompetitiveSwimmer) members.get(i)).getIsButterfly()){
+                    Results r = new Results(time, competition, placement, isCompetition, discipline);
+                    ((CompetitiveSwimmer) members.get(i)).addCompResult(r);
+                    System.out.println("Butterfly resultat tilføjet til konkurrenceresultater.");
+                }
+                else{
+                    System.out.println("Ugyldig disciplin");
+                }
             }
-        }
+
         //writeToFile();
+        }
     }
 
     public void removeResults() {
