@@ -5,17 +5,6 @@ import java.time.format.DateTimeFormatter;
 public class Accountant extends Chairman implements java.io.Serializable{
     private static final long serialVersionUID = 6529685098267757680L;
 
-    /**
-     * The name of the accountant
-     */
-    private final String name = "Lasse";
-
-    /**
-     * List of all members in the club
-     */
-    // ArrayList<Member> members = getMembers();
-
-    Scanner scanner = new Scanner(System.in);
 
     /**
      * Constructor for Accountant class
@@ -67,6 +56,10 @@ public class Accountant extends Chairman implements java.io.Serializable{
         }
     }
 
+    /**
+     * Marks the paid status of a member as unpaid
+     * @param memberId
+     */
     public void markAsUnpaid (int memberId) {
         for(int i = 0; i < members.size(); i++) {
 
@@ -164,6 +157,9 @@ public class Accountant extends Chairman implements java.io.Serializable{
         }
     }
 
+    /**
+     * Prints the due date for all members
+     */
     public void displayDueDate(){
         System.out.println("Viser betalingsdatoer.");
         for (Member m : members){

@@ -273,8 +273,8 @@ public class Trainer extends Chairman implements java.io.Serializable {
         HashMap<Integer, Double> butterfly = new HashMap<>();
 
         for (Member m : members) {
-            if(m instanceof CompetitiveSwimmer) {
-                for (Results r : ((CompetitiveSwimmer) m).getCompResults()) {
+                for (Results r : ((CompetitiveSwimmer) m).getCompResults())
+                {
                     if (r.getDiscipline().equals("freestyle")) {
                         fristil.put(m.getMemberId(), r.getTime());
                     } else if (r.getDiscipline().equals("breaststroke")) {
@@ -285,7 +285,7 @@ public class Trainer extends Chairman implements java.io.Serializable {
                         System.out.println("Ugyldigt input");
                     }
                 }
-            }
+
         }
         System.out.print("Vælg disciplin. Tast 1 for freestyle. \nTast 2 for breaststroke. \nTast 3 for butterfly. \n");
         int input = scanner.nextInt();

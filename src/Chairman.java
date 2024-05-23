@@ -84,6 +84,11 @@ public class Chairman implements java.io.Serializable {
         }
     }
 
+    /**
+     * Method to ensure safety when instantiating a member
+     * through the addMember() method.
+     * @return The age of a member
+     */
     public int giveAge(){
         System.out.println("Indtast alder: ");
         int age = scanner.nextInt();
@@ -94,6 +99,11 @@ public class Chairman implements java.io.Serializable {
         return age;
     }
 
+    /**
+     * Method to ensure safety when instantiating a member
+     * through the addMember() method.
+     * @return the phone number of the member.
+     */
     public int givePhoneNumber(){
         System.out.println("Indtast telefonnummer: ");
         int phoneNumber = scanner.nextInt();
@@ -104,6 +114,11 @@ public class Chairman implements java.io.Serializable {
         return phoneNumber;
     }
 
+    /**
+     * Method to ensure safety when instantiating a member
+     * through the addMember() method.
+     * @return the gender of the member.
+     */
     public int giveGender(){
         System.out.println("Indtast køn: 1: for mand, 2: for kvinde, 3: for andet.");
         int gender = scanner.nextInt();
@@ -114,6 +129,11 @@ public class Chairman implements java.io.Serializable {
         return gender;
     }
 
+    /**
+     * Method to ensure safety when instantiating a member
+     * through the addMember() method.
+     * @return the name of the member.
+     */
     public String giveName(){
         System.out.println("Indtast fornavn: ");
         String firstName = scanner.next();
@@ -122,6 +142,11 @@ public class Chairman implements java.io.Serializable {
         return firstName + " " + lastName;
     }
 
+    /**
+     * Method to ensure safety when instantiating a member
+     * through the addMember() method.
+     * @return the address of the member
+     */
     public String giveAddress(){
         System.out.println("Indtast vejnavn: ");
         String vejnavn = scanner.next();
@@ -130,6 +155,11 @@ public class Chairman implements java.io.Serializable {
         return (vejnavn + " " + husnummer);
     }
 
+    /**
+     * Method to ensure safety when instantiating a member
+     * through the addMember() method.
+     * @return a given discipline of the member
+     */
     public int giveDiscipline(){
         int discipline = scanner.nextInt();
         while(discipline <= 0 || discipline > 2) {

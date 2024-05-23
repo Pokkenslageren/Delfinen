@@ -281,17 +281,9 @@ public class Member implements java.io.Serializable { // default motionist
 		this.isBlocked = isBlocked;
 	}
 
-	public void setIsUnique(boolean isUnique) {
-		this.isUnique = isUnique;
-	}
-
-	public boolean getIsUnique(){
-		return isUnique;
-	}
 	/**
 	 * Prints all available info on the member.
 	 */
-
 	public void printMemberInfo(){
 		System.out.println();
 		System.out.println("Member-ID: " + memberId);
