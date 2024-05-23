@@ -107,7 +107,7 @@ public class Accountant extends Chairman implements java.io.Serializable{
                 System.out.println("Medlem: " + members.get(i).getMemberId() + ", fundet.");
                 members.get(i).setIsBlocked(false);
                 System.out.println("Ændring gemt.");
-                System.out.println("Medlemsskab tilhørende medlem: " + members.get(i).getMemberId() +", navn: " + members.get(i).getName() + " er blokeret.");
+                System.out.println("Medlemsskab tilhørende medlem: " + members.get(i).getMemberId() +", navn: " + members.get(i).getName() + " er ikke længere blokeret.");
             }
         }
     }
@@ -116,11 +116,16 @@ public class Accountant extends Chairman implements java.io.Serializable{
      * Prints all members with paid memberships
      */
     public void displayPaid() {
+        int counter = 0;
         System.out.println("Viser betalte medlemsskaber:");
         for(Member m : members) {
             if(m.getIsPaid()) { //skal være instanceof Competitve swimmer.
                 System.out.println("Medlem: " + m.getMemberId() + " - Navn: " + m.getName() + ".");
+                counter++;
             }
+        }
+        if(counter == 0){
+            System.out.println("Der er ingen betalte medlemsskaber.");
         }
     }
 
@@ -129,11 +134,16 @@ public class Accountant extends Chairman implements java.io.Serializable{
      * Prints all members with unpaid memberships
      */
     public void displayUnpaid() {
+        int counter = 0;
         System.out.println("Viser ubetalte medlemsskaber:");
         for(Member m : members) {
             if(!m.getIsPaid()) {
                 System.out.println("Medlem: " + m.getMemberId() + " - Navn: " + m.getName() + ".");
+                counter++;
             }
+        }
+        if(counter == 0){
+            System.out.println("Der er ingen ubetalte medlemsskaber.");
         }
     }
 
@@ -141,11 +151,16 @@ public class Accountant extends Chairman implements java.io.Serializable{
      * Prints all blocked members
      */
     public void displayBlocked() {
+        int counter = 0;
         System.out.println("Viser blokerede medlemsskaber:");
         for(Member m : members) {
             if(m.getIsBlocked()) {
                 System.out.println("Medlem: " + m.getMemberId() + " - Navn: " + m.getName() + ".");
+                counter++;
             }
+        }
+        if(counter == 0 ){
+            System.out.println("Der er ingen blokerede medlemmer.");
         }
     }
 

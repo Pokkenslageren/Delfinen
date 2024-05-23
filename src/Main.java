@@ -45,7 +45,7 @@ import java.util.Scanner;
 			accountant1.readFromFile();
 			int sentinel = 1;
 			while(sentinel != 0){
-				System.out.print("Tast 1 for at se alle Delfinens medlemmer, \nTast 2 for at vise information om et specfikt medlem. \nTast 3 for at printe alle betalte medlemsskaber. \nTast 4 for at printe alle ubetalte medlemsskaber. \nTast 5 for at printe alle blokerede medlemmer. \nTast 6 for at markere et medlemsskab som betalt. \nTast 7 for at blokere et medlem. \nTast 8 for at fjerne blokeret status for et medlem.");
+				System.out.print("Tast 1 for at se alle Delfinens medlemmer, \nTast 2 for at vise information om et specfikt medlem. \nTast 3 for at printe alle betalte medlemsskaber. \nTast 4 for at printe alle ubetalte medlemsskaber. \nTast 5 for at printe alle blokerede medlemmer. \nTast 6 for at markere et medlemsskab som betalt. \nTast 7 for at blokere et medlem. \nTast 8 for at fjerne blokeret status for et medlem. \nTast 9 for at printe due dates for alle medlemmer.\nTast 0 for at returnere til hovedmenu. \n");
 				int input = sc.nextInt();
 				switch(input){
 					case 1:
@@ -89,6 +89,10 @@ import java.util.Scanner;
 						System.out.print("Medlem med ID: " + unblock + ", har fået fjernet sin blokering.");
 						accountant1.writeToFile();
 						break;
+					case 9:
+						System.out.println("Printer due date for alle medlemmer.");
+						accountant1.displayDueDate();
+						break;
 					default:
 						sentinel = 0;
 						break;
@@ -100,7 +104,7 @@ import java.util.Scanner;
 			trainer1.readFromFile();
 			int sentinel = 1;
 			while(sentinel != 0){
-				System.out.print("Tast 1 for at printe alle Delfinens medlemmer. \nTast 2 for at printe alle juniorsvømmere. \nTast 3 for at printe alle seniorsvømmere. \nTast 4 for at tilføje træningsresultat. \nTast 5 for at tilføje konkurrenceresultat. \nTast 6 for at printe træningsresultater. \nTast 7 for at printe konkurrenceresultater. \nTast 8 for at fjerne resultat.");
+				System.out.print("Tast 1 for at printe alle Delfinens medlemmer. \nTast 2 for at printe alle juniorsvømmere. \nTast 3 for at printe alle seniorsvømmere. \nTast 4 for at tilføje træningsresultat. \nTast 5 for at tilføje konkurrenceresultat. \nTast 6 for at printe træningsresultater. \nTast 7 for at printe konkurrenceresultater. \nTast 8 for at fjerne resultat. \nTast 0 for at returnere til hovedmenu.\n");
 				int input = sc.nextInt();
 				switch(input){
 					case 1:
@@ -141,7 +145,7 @@ import java.util.Scanner;
 			chairman1.readFromFile();
 			int sentinel = 1;
 			while(sentinel != 0){
-				System.out.println("Tast 1 for at printe alle Delfinens medlemmer. \nTast 2 for at tilføje medlem. \nTast 3 for at fjerne medlem. \nTast 4 for at redigere medlem");
+				System.out.println("Tast 1 for at printe alle Delfinens medlemmer. \nTast 2 for at tilføje medlem. \nTast 3 for at fjerne medlem. \nTast 4 for at redigere medlem \nTast 5 for at se information om et specifikt medlem. \nTast 0 for at returnere til hovedmenu.\n");
 				int input = sc.nextInt();
 				switch(input){
 					case 1:
@@ -172,7 +176,7 @@ import java.util.Scanner;
 		public void testing(){
 			int sentinel = 1;
 			while(sentinel != 0){
-				System.out.println("Vælg din rolle. 1: Chairman. 2: Træner. 3: Accountant.");
+				System.out.println("Vælg din rolle \n1: Chairman. \n2: Træner. \n3: Accountant. \n0: Afslut programmet." );
 				int input = sc.nextInt();
 				switch(input){
 					case 1:
