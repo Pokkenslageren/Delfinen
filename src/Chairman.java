@@ -222,8 +222,7 @@ public class Chairman implements java.io.Serializable {
 
                             case 1:
                                 System.out.println("Nuværende navn: " + members.get(i).getName());
-                                //System.out.println("Indtast det nye navn: ");
-                                String name = scanner.next();
+                                String name = giveName();
                                 members.get(i).setName(name);
                                 System.out.println("Ændring gemt: " + members.get(i).getName() + ".");
                                 System.out.println();
@@ -231,8 +230,7 @@ public class Chairman implements java.io.Serializable {
 
                             case 2:
                                 System.out.println("Nuværende alder: " + members.get(i).getAge());
-                                System.out.println("Indtast den nye alder: ");
-                                int age = scanner.nextInt();
+                                int age = giveAge();
                                 members.get(i).setAge(age);
                                 System.out.println("Ændring gemt: " + members.get(i).getAge() + ".");
                                 System.out.println();
@@ -240,8 +238,7 @@ public class Chairman implements java.io.Serializable {
 
                             case 3:
                                 System.out.println("Nuværende køn: " + members.get(i).getGender());
-                                System.out.println("Indtast det nye køn: ");
-                                int gender = scanner.nextInt();
+                                int gender = giveGender();
                                 members.get(i).setGender(gender);
                                 System.out.println("Ændring gemt: " + members.get(i).getGender() + ".");
                                 System.out.println();
@@ -249,8 +246,7 @@ public class Chairman implements java.io.Serializable {
 
                             case 4:
                                 System.out.println("Nuværende telefonnummer: " + members.get(i).getPhoneNr());
-                                System.out.println("Indtast det nye telefonnummer: ");
-                                int phoneNr = scanner.nextInt();
+                                int phoneNr = givePhoneNumber();
                                 members.get(i).setPhoneNr(phoneNr);
                                 System.out.println("Ændring gemt: " + members.get(i).getPhoneNr() + ".");
                                 System.out.println();
@@ -258,8 +254,7 @@ public class Chairman implements java.io.Serializable {
 
                             case 5:
                                 System.out.println("Nuværende adresse: " + members.get(i).getAddress());
-                                System.out.println("Indtast den nye adresse: ");
-                                String address = scanner.next();
+                                String address = giveAddress();
                                 members.get(i).setAddress(address);
                                 System.out.println("Ændring gemt: " + members.get(i).getAddress() + ".");
                                 System.out.println();
@@ -295,13 +290,11 @@ public class Chairman implements java.io.Serializable {
                         System.out.println("8: Brystsvømning aktivitet.");
                         System.out.println("9: Butterfly aktivitet.");
                         System.out.println("0: Afslut");
-                        typeSafetyInteger();
                         int input = scanner.nextInt();
                         switch (input){
 
                             case 1:
                                 System.out.println("Nuværende navn: " + members.get(i).getName());
-                                System.out.println("Indtast det nye navn: ");
                                 String name = giveName();
                                 members.get(i).setName(name);
                                 System.out.println("Ændring gemt: " + members.get(i).getName() + ".");
@@ -310,8 +303,7 @@ public class Chairman implements java.io.Serializable {
 
                             case 2:
                                 System.out.println("Nuværende alder: " + members.get(i).getAge());
-                                System.out.println("Indtast den nye alder: ");
-                                int age = scanner.nextInt();
+                                int age = giveAge();
                                 members.get(i).setAge(age);
                                 System.out.println("Ændring gemt: " + members.get(i).getAge() + ".");
                                 System.out.println();
@@ -319,8 +311,7 @@ public class Chairman implements java.io.Serializable {
 
                             case 3:
                                 System.out.println("Nuværende køn: " + members.get(i).getGender());
-                                System.out.println("Indtast det nye køn: ");
-                                int gender = scanner.nextInt();
+                                int gender = giveGender();
                                 members.get(i).setGender(gender);
                                 System.out.println("Ændring gemt: " + members.get(i).getGender() + ".");
                                 System.out.println();
@@ -328,8 +319,7 @@ public class Chairman implements java.io.Serializable {
 
                             case 4:
                                 System.out.println("Nuværende telefonnummer: " + members.get(i).getPhoneNr());
-                                System.out.println("Indtast det nye telefonnummer: ");
-                                int phoneNr = scanner.nextInt();
+                                int phoneNr = givePhoneNumber();
                                 members.get(i).setPhoneNr(phoneNr);
                                 System.out.println("Ændring gemt: " + members.get(i).getPhoneNr() + ".");
                                 System.out.println();
@@ -337,7 +327,6 @@ public class Chairman implements java.io.Serializable {
 
                             case 5:
                                 System.out.println("Nuværende adresse: " + members.get(i).getAddress());
-                                System.out.println("Indtast den nye adresse: ");
                                 String address = giveAddress();
                                 members.get(i).setAddress(address);
                                 System.out.println("Ændring gemt: " + members.get(i).getAddress() + ".");
