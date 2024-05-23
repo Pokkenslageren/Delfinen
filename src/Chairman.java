@@ -77,13 +77,28 @@ public class Chairman implements java.io.Serializable {
         }
     }
 
-    public void typeSafety1(){
+    public void typeSafetyInteger(){
         while(!scanner.hasNextInt()){
             scanner.nextLine();
             System.out.println("Ugyldigt input. Indtast heltal.");
         }
     }
 
+    public String giveName(){
+        System.out.println("Indtast fornavn:");
+        String firstName = scanner.next();
+        System.out.println("Indtast efternavn");
+        String lastName = scanner.next();
+        return firstName + " " + lastName;
+    }
+
+    public String giveAddress(){
+        System.out.println("Indtast vejnavn: ");
+        String vejnavn = scanner.next();
+        System.out.println("Indtast bolignummer: ");
+        String husnummer = scanner.next();
+        return (vejnavn + " " + husnummer);
+    }
     /**
      * Adds a new member to the members list
      */
@@ -91,46 +106,35 @@ public class Chairman implements java.io.Serializable {
         Random rdm = new Random();
         System.out.println();
         System.out.println("Tryk 1 for motionist. \nTryk 2 for konkurrencesvømmer.");
-        typeSafety1();
+        typeSafetyInteger();
         int input = scanner.nextInt();
         switch (input) {
-
             case 1:
-                System.out.println("Indtast navn: ");
-                String name = scanner.next();
+                //System.out.println("Indtast navn: ");
+                String name = giveName();
                 System.out.println("Indtast alder: ");
                 int age = scanner.nextInt();
                 System.out.println("Indtast køn: 1: for mand, 2: for kvinde, 3: for andet.");
                 int gender = scanner.nextInt();
                 System.out.println("Indtast telefonnummer: ");
                 int phoneNr = scanner.nextInt();
-                System.out.println("Indtast addresse: ");
-                String address = scanner.next();
+                //System.out.println("Indtast addresse: ");
+                String address = giveAddress();
                 Member m = new Member(name, age, gender, phoneNr, address);
                 m.setMemberId(rdm.nextInt(1000, 10000));
                 members.add(m);
-                // do {
-                //     for (Member mem : members) {
-                //         if (!(m.getMemberId() == mem.getMemberId())) {
-                //             members.add(m);
-                //             m.setIsUnique(true);
-                //         }
-                //         else{m.setMemberId(rdm.nextInt(1000, 10000));}
-                //     }
-                // }while(!m.getIsUnique());
                 break;
-
             case 2:
-                System.out.println("Indtast navn: ");
-                String compName = scanner.next();
+                //System.out.println("Indtast navn: ");
+                String compName = giveName();
                 System.out.println("Indtast alder: ");
                 int compAge = scanner.nextInt();
                 System.out.println("Indtast køn: 1: for mand, 2: for kvinde, 3: for andet.");
                 int compGender = scanner.nextInt();
                 System.out.println("Indtast telefonnummer: ");
                 int compPhoneNr = scanner.nextInt();
-                System.out.println("Indtast addresse: ");
-                String compAddress = scanner.next();
+                //System.out.println("Indtast addresse: ");
+                String compAddress = giveAddress();
                 System.out.println("Skal medlemmet udøve freestyle? 1: Ja, 2: Nej.");
                 int freestyle = scanner.nextInt();
                 System.out.println("Skal medlemmet udøve brystsvømning? 1: Ja, 2: Nej.");
@@ -140,7 +144,6 @@ public class Chairman implements java.io.Serializable {
                 Member c = new CompetitiveSwimmer(compName, compAge, compGender, compPhoneNr, compAddress, freestyle, breaststroke, butterfly);
                 members.add(c);
                 break;
-
             default:
                 System.out.println("Ugyldigt input.");
                 break;
@@ -151,11 +154,11 @@ public class Chairman implements java.io.Serializable {
      * Removes a member from the members list, given a member ID
      */
     public void removeMember(){
+        System.out.println("Indtast Member-ID");
         int memberId = scanner.nextInt();
         for (int i = 0; i <= members.size()-1; i++){
-
             if (memberId == members.get(i).getMemberId()){
-                members.remove(members.get(i)); // OBS
+                members.remove(members.get(i));
             }
         }
     }
@@ -167,6 +170,7 @@ public class Chairman implements java.io.Serializable {
     public void editMember(){
         System.out.println("Indtast medlems-ID: ");
         int memberId = scanner.nextInt();
+        int counter = 0;
         for (int i = 0; i <= members.size()-1; i++){
 
             if (memberId == members.get(i).getMemberId()){
@@ -262,14 +266,14 @@ public class Chairman implements java.io.Serializable {
                         System.out.println("8: Brystsvømning aktivitet.");
                         System.out.println("9: Butterfly aktivitet.");
                         System.out.println("0: Afslut");
-                        typeSafety1();
+                        typeSafetyInteger();
                         int input = scanner.nextInt();
                         switch (input){
 
                             case 1:
                                 System.out.println("Nuværende navn: " + members.get(i).getName());
                                 System.out.println("Indtast det nye navn: ");
-                                String name = scanner.next();
+                                String name = giveName();
                                 members.get(i).setName(name);
                                 System.out.println("Ændring gemt: " + members.get(i).getName() + ".");
                                 System.out.println();
@@ -305,7 +309,7 @@ public class Chairman implements java.io.Serializable {
                             case 5:
                                 System.out.println("Nuværende adresse: " + members.get(i).getAddress());
                                 System.out.println("Indtast den nye adresse: ");
-                                String address = scanner.next();
+                                String address = giveAddress();
                                 members.get(i).setAddress(address);
                                 System.out.println("Ændring gemt: " + members.get(i).getAddress() + ".");
                                 System.out.println();
@@ -360,7 +364,10 @@ public class Chairman implements java.io.Serializable {
                 }
             }
             else {
-                System.out.println("ID ikke fundet.");
+                 counter++;
+                 if (counter == members.size()) {
+                     System.out.println("ID ikke fundet. Returnér med 0 + Enter");
+                 }
             }
         }
     }
@@ -374,7 +381,7 @@ public class Chairman implements java.io.Serializable {
 
             oos.writeObject(members);
 
-            System.out.println("Data gemt i Members.");
+            //System.out.println("Data gemt i Members.");
         } catch (IOException e) {
             e.printStackTrace();
         }
