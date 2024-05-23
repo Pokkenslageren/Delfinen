@@ -374,33 +374,83 @@ public class Chairman implements java.io.Serializable {
 
                             case 7:
                                 if(members.get(i) instanceof CompetitiveSwimmer) {
-                                    System.out.println("Nuværende freestyle aktivitet: " + (((CompetitiveSwimmer) members.get(i)).getIsFreestyle()));
-                                    System.out.println("Indtast det nye valg: ");
-                                    boolean freestyle = scanner.nextBoolean(); // OBS DATATYPE
-                                    ((CompetitiveSwimmer) members.get(i)).setIsFreestyle(freestyle);
-                                    System.out.println("Ændring gemt: " + ((CompetitiveSwimmer) members.get(i)).getIsFreestyle() + ".");
+                                    System.out.print("Nuværende freestyle aktivitet: ");
+                                    if((((CompetitiveSwimmer) members.get(i)).getIsFreestyle())){
+                                        System.out.println("Deltager.");
+                                    }
+                                    else{
+                                        System.out.println("Deltager ikke.");
+                                    }
+                                    System.out.println("Indtast det nye valg. Tast 1 for Deltager. Tast 0 for Deltager ikke. ");
+                                    int freestyle = scanner.nextInt(); // OBS DATATYPE
+                                    if(freestyle == 1){
+                                        ((CompetitiveSwimmer) members.get(i)).setIsFreestyle(true);
+                                        System.out.println("Medlemmet deltager nu i freestyle.");
+                                    }
+                                    else if(freestyle == 0){
+                                        ((CompetitiveSwimmer) members.get(i)).setIsFreestyle(false);
+                                        System.out.println("Medlemmet deltager nu ikke i freestyle");
+                                    }
+                                    else{
+                                        System.out.println("Ugyldigt input");
+                                    }
+
+                                    System.out.println("Ændring gemt: ");
                                     System.out.println();
                                 }
                                 break;
-
                             case 8:
                                 if(members.get(i) instanceof CompetitiveSwimmer) {
-                                    System.out.println("Nuværende brystsvømning aktivitet: " + (((CompetitiveSwimmer) members.get(i)).getIsBreaststroke()));
-                                    System.out.println("Indtast det nye valg: ");
-                                    boolean breaststroke = scanner.nextBoolean(); // OBS DATATYPE
-                                    ((CompetitiveSwimmer) members.get(i)).setIsBreaststroke(breaststroke);
-                                    System.out.println("Ændring gemt: " + ((CompetitiveSwimmer) members.get(i)).getIsBreaststroke() + ".");
+                                    System.out.print("Nuværende brystsvømning aktivitet: ");
+                                    if((((CompetitiveSwimmer) members.get(i)).getIsBreaststroke())){
+                                        System.out.println("Deltager.");
+                                    }
+                                    else{
+                                        System.out.println("Deltager ikke.");
+                                    }
+                                    System.out.println("Indtast det nye valg. Tast 1 for Deltager. Tast 0 for Deltager ikke. ");
+                                    int breaststroke = scanner.nextInt(); // OBS DATATYPE
+                                    if(breaststroke == 1){
+                                        ((CompetitiveSwimmer) members.get(i)).setIsBreaststroke(true);
+                                        System.out.println("Medlemmet deltager nu i brystsvømning.");
+                                    }
+                                    else if(breaststroke == 0){
+                                        ((CompetitiveSwimmer) members.get(i)).setIsBreaststroke(false);
+                                        System.out.println("Medlemmet deltager nu ikke i brystsvømning");
+                                    }
+                                    else{
+                                        System.out.println("Ugyldigt input");
+                                    }
+
+                                    System.out.println("Ændring gemt: ");
                                     System.out.println();
                                 }
                                 break;
-
                             case 9:
                                 if(members.get(i) instanceof CompetitiveSwimmer) {
-                                    System.out.println("Nuværende butterfly aktivitet: " + (((CompetitiveSwimmer) members.get(i)).getIsButterfly()));
-                                    System.out.println("Indtast det nye valg: ");
-                                    boolean butterfly = scanner.nextBoolean(); // OBS DATATYPE
-                                    ((CompetitiveSwimmer) members.get(i)).setIsButterfly(butterfly);
-                                    System.out.println("Ændring gemt: " + ((CompetitiveSwimmer) members.get(i)).getIsButterfly() + ".");
+                                    System.out.print("Nuværende butterfly aktivitet: ");
+                                    if((((CompetitiveSwimmer) members.get(i)).getIsButterfly())){
+                                        System.out.println("Deltager.");
+                                    }
+                                    else{
+                                        System.out.println("Deltager ikke.");
+                                    }
+                                    System.out.println("Indtast det nye valg. Tast 1 for Deltager. Tast 0 for Deltager ikke. ");
+                                    int butterfly = scanner.nextInt(); // OBS DATATYPE
+                                    if(butterfly == 1){
+                                        ((CompetitiveSwimmer) members.get(i)).setIsButterfly(true);
+                                        System.out.println("Medlemmet deltager nu i butterfly.");
+                                    }
+                                    else if(butterfly == 0){
+                                        ((CompetitiveSwimmer) members.get(i)).setIsButterfly(false);
+                                        System.out.println("Medlemmet deltager nu ikke i butterfly");
+                                    }
+                                    else{
+                                        System.out.println("Ugyldigt input");
+                                    }
+
+                                    System.out.println("Ændring gemt: ");
+                                    System.out.println();
                                 }
                                 break;
                             default:
