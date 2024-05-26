@@ -81,20 +81,20 @@ public class Trainer extends Chairman implements java.io.Serializable {
     public void addCompResults() {
         System.out.println("Indtast medlems-ID: ");
         int memberId = scanner.nextInt();
-        System.out.println("Indtast tid: ");
+        System.out.println("Indtast tid i sekunder, eksempelvis 12,5: ");
         double time = scanner.nextDouble();
         System.out.println("Indtast konkurrence: ");
         String competition = scanner.next();
         System.out.println("Indtast placering: ");
         int placement = scanner.nextInt();
         boolean isCompetition = true;
-        System.out.println("Indtast disciplin: ");
+        System.out.println("Indtast disciplin, Freestyle, Bryst eller Butterfly: ");
         String discipline = scanner.next();
         for (int i = 0; i < members.size(); i++) {
             if (memberId == members.get(i).getMemberId() && members.get(i) instanceof CompetitiveSwimmer) {
                 if((discipline.equals("Freestyle") || discipline.equals("freestyle")) && ((CompetitiveSwimmer) members.get(i)).getIsFreestyle()){
                     Results r = new Results(time, competition, placement, isCompetition, discipline);
-                    ((CompetitiveSwimmer) members.get(i)).addTrainingResult(r);
+                    ((CompetitiveSwimmer) members.get(i)).addCompResult(r);
                     System.out.println("Freestyle resultat tilføjet til konkurrenceresultater.");
                 }
                 else if((discipline.equals("Bryst") || discipline.equals("bryst")) && ((CompetitiveSwimmer) members.get(i)).getIsBreaststroke()){
@@ -261,11 +261,11 @@ public class Trainer extends Chairman implements java.io.Serializable {
         for (Member m : members) {
             if (m instanceof CompetitiveSwimmer) {
                 for (Results r : ((CompetitiveSwimmer) m).getCompResults()) {
-                    if (r.getDiscipline().equals("freestyle")) {
+                    if (r.getDiscipline().equals("freestyle") || r.getDiscipline().equals("Freestyle")) {
                         fristil.put(m.getMemberId(), r.getTime());
-                    } else if (r.getDiscipline().equals("breaststroke")) {
+                    } else if (r.getDiscipline().equals("bryst") || r.getDiscipline().equals("Bryst")) {
                         bryst.put(m.getMemberId(), r.getTime());
-                    } else if (r.getDiscipline().equals("butterfly")) {
+                    } else if (r.getDiscipline().equals("butterfly") || r.getDiscipline().equals("Butterfly")) {
                         butterfly.put(m.getMemberId(), r.getTime());
                     }
                 }
@@ -273,7 +273,7 @@ public class Trainer extends Chairman implements java.io.Serializable {
 
 
         }
-        System.out.print("Vælg disciplin. Tast 1 for freestyle. \nTast 2 for breaststroke. \nTast 3 for butterfly. \n");
+        System.out.print("Vælg disciplin. \nTast 1 for freestyle. \nTast 2 for breaststroke. \nTast 3 for butterfly. \n");
         int input = scanner.nextInt();
         switch (input) {
             case 1:

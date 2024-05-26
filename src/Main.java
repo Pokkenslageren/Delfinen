@@ -2,33 +2,24 @@ import java.io.*;
 import java.util.Scanner;
 
 	public class Main{
-
 		Scanner sc = new Scanner(System.in);
-		Chairman chairman1 = new Chairman("James");
-		Trainer trainer1 = new Trainer("JamesIgen");
-		Accountant accountant1 = new Accountant("OgsåJames");
+		Chairman chairman1 = new Chairman("Formand");
+		Trainer trainer1 = new Trainer("Træner");
+		Accountant accountant1 = new Accountant("Kasserer");
 
 		public static void main(String[] args) {
 			Main main = new Main();
-			//main.runProgram();
-			main.testing();
+			main.runProgram();
 		}
 
-		public void runProgram() {
-			createFile();
-			loginMenu();
-		}
-
+		/**
+		 * Creates a Members file to store data, if one does not already exist in the directory
+		 */
 		public void createFile() {
 			try {
 				File file = new File("Members");
-				File file2 = new File("TrainingResults");
-				File file3 = new File("CompResults");
+
 				if (file.createNewFile())
-					System.out.println("File Created");
-				if (file2.createNewFile())
-					System.out.println("File Created");
-				if(file3.createNewFile())
 					System.out.println("File Created");
 			}
 			catch (IOException e) {
@@ -36,11 +27,9 @@ import java.util.Scanner;
 			}
 		}
 
-		public void loginMenu() {
-			Scanner input = new Scanner(System.in);
-			System.out.println("Velkommen til Club adminstration system for Svømmeklubben Delfinen");
-		}
-
+		/**
+		 * Method to handle all functionality related to accountant
+		 */
 		public void accountant(){
 			accountant1.readFromFile();
 			int sentinel = 1;
@@ -100,6 +89,9 @@ import java.util.Scanner;
 			}
 		}
 
+		/**
+		 * Method to handle all functionality related to trainer
+		 */
 		public void trainer(){
 			trainer1.readFromFile();
 			int sentinel = 1;
@@ -144,6 +136,9 @@ import java.util.Scanner;
 			}
 		}
 
+		/**
+		 * Method to handle all functionality related to chairman
+		 */
 		public void chairman(){
 			chairman1.readFromFile();
 			int sentinel = 1;
@@ -166,6 +161,7 @@ import java.util.Scanner;
 						chairman1.editMember();
 						chairman1.writeToFile();
 					case 5:
+						System.out.println("Indtast medlems-ID: ");
 						int memberId = sc.nextInt();
 						chairman1.printMemberInfo(memberId);
 						break;
@@ -176,22 +172,27 @@ import java.util.Scanner;
 			}
 		}
 
-		public void testing(){
+		/**
+		 * Runs the program
+		 */
+		public void runProgram(){
+			createFile();
+			System.out.println("Velkommen til Sport Club Adminstration System for Svømmeklubben Delfinen");
 			int sentinel = 1;
 			while(sentinel != 0){
-				System.out.println("Vælg din rolle \n1: Chairman. \n2: Træner. \n3: Accountant. \n0: Afslut programmet." );
+				System.out.println("Vælg din rolle \n1: Formand. \n2: Træner. \n3: Kasserer. \n0: Afslut programmet." );
 				int input = sc.nextInt();
 				switch(input){
 					case 1:
-						System.out.println("Chairman valgt.");
+						System.out.println("Formand valgt.");
 						chairman();
 						break;
 					case 2:
-						System.out.println("Trainer valgt.");
+						System.out.println("Træner valgt.");
 						trainer();
 						break;
 					case 3:
-						System.out.println("Accountant valgt.");
+						System.out.println("Kasserer valgt.");
 						accountant();
 						break;
 					default:

@@ -160,10 +160,18 @@ public class CompetitiveSwimmer extends Member implements java.io.Serializable{
 		return true;
 	}
 
+	/**
+	 * Adds a competition result to the corresponding competition ArrayList of the given member
+	 * @param result The result to be added
+	 */
 	public void addCompResult(Results result){
 		compResults.add(result);
 	}
 
+	/**
+	 * Adds a training result to the corresponding training ArrayList of the given member
+	 * @param result The result to be added
+	 */
 	public void addTrainingResult(Results result){
 		trainingResults.add(result);
 	}
